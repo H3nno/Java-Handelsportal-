@@ -7,6 +7,7 @@ public class TestKlasseHDF {
 		
 		
 		System.out.println("HDF Finn");
+		System.out.println("HDF Finn");
 	}
 	
 }
