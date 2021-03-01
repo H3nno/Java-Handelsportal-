@@ -51,7 +51,7 @@ public class LoginGUI extends JFrame {
     lEinkaufsladenonline.setOpaque(true);
     cp.add(lEinkaufsladenonline);
     lEroeffnetam1872021.setBounds(192, 144, 209, 33);
-    lEroeffnetam1872021.setText("Eröffnet am 18.7.2021");
+    lEroeffnetam1872021.setText("Eroeffnet am 18.7.2021");
     lEroeffnetam1872021.setHorizontalAlignment(SwingConstants.CENTER);
     lEroeffnetam1872021.setBackground(new Color(0xFFC800));
     lEroeffnetam1872021.setOpaque(true);
