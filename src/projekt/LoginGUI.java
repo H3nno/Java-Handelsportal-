@@ -5,14 +5,6 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
-/**
- *
- * Beschreibung
- *
- * @version 1.0 vom 01.02.2021
- * @author 
- */
-
 public class LoginGUI extends JFrame {
   // Anfang Attribute
   private JLabel lEinkaufsladenonline = new JLabel();
@@ -107,9 +99,7 @@ public class LoginGUI extends JFrame {
   
   
   public void bLogin_ActionPerformed(ActionEvent evt) {
-	  //Verweis auf das Kundenportal
-	  //Schließen vom LoginFenster
-	  //->> Methode wird in Login.java implementiert
+	  Login.LoginButtonPressed();
     
   } 
 

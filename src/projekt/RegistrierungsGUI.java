@@ -17,10 +17,11 @@ public class RegistrierungsGUI extends JFrame {
   private JButton bJetztregistrierenundzurueckzumLogin = new JButton();
   private JTextField jTFVorname = new JTextField();
   private JTextField jTFNachname = new JTextField();
-  private JTextField jTFUsername = new JTextField();
-  private JPasswordField jPFPasswort1 = new JPasswordField();
-  private JPasswordField jPasswordField1 = new JPasswordField();
-  private JLabel jStatus = new JLabel();
+  public JTextField jTFUsername = new JTextField();
+  public JPasswordField jPFPasswort1 = new JPasswordField();
+  public JPasswordField jPasswordField1 = new JPasswordField();
+  public static JLabel jStatus = new JLabel();
+  private JButton bZurueckzumLogin = new JButton();
   // Ende Attribute
   
   public RegistrierungsGUI() { 
@@ -28,7 +29,7 @@ public class RegistrierungsGUI extends JFrame {
     super();
     setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     int frameWidth = 498; 
-    int frameHeight = 510;
+    int frameHeight = 550;
     setSize(frameWidth, frameHeight);
     Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
     int x = (d.width - getSize().width) / 2;
@@ -104,7 +105,21 @@ public class RegistrierungsGUI extends JFrame {
     cp.add(jPasswordField1);
     jStatus.setBounds(96, 360, 257, 25);
     jStatus.setText("");
+    jStatus.setHorizontalAlignment(SwingConstants.CENTER);
     cp.add(jStatus);
+    
+    
+    
+    bZurueckzumLogin.setBounds(176, 464, 113, 33);
+    bZurueckzumLogin.setText("Zurück zum Login");
+    bZurueckzumLogin.setMargin(new Insets(2, 2, 2, 2));
+    bZurueckzumLogin.addActionListener(new ActionListener() { 
+      public void actionPerformed(ActionEvent evt) { 
+        bZurueckzumLogin_ActionPerformed(evt);
+      }
+    });
+    bZurueckzumLogin.setBackground(new Color(0xFFC800));
+    cp.add(bZurueckzumLogin);
     // Ende Komponenten
     
     setVisible(true);
@@ -112,12 +127,16 @@ public class RegistrierungsGUI extends JFrame {
   
   // Anfang Methoden
   
+  
+  public void bZurueckzumLogin_ActionPerformed(ActionEvent evt) {
+	    Registrierung.Zurueck();
+	    
+	  }
 
   
   public void bJetztregistrierenundzurueckzumLogin_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
+    Registrierung.Registrieren();
     
-  } // end of bJetztregistrierenundzurueckzumLogin_ActionPerformed
+  }
 
-  // Ende Methoden
-} // end of class RegistrierungGUI
+} 
