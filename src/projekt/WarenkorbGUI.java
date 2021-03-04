@@ -74,6 +74,7 @@ public class WarenkorbGUI extends JFrame {
     bEinkaufabschliessen.addActionListener(new ActionListener() { 
         public void actionPerformed(ActionEvent evt) { 
           bEinkaufabschliessen_ActionPerformed(evt);
+          
         }
       });
     
