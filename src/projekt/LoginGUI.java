@@ -101,23 +101,22 @@ public class LoginGUI extends JFrame {
     // Ende Komponenten
     
     setVisible(true);
-  } // end of public LoginGUI
+  } 
   
   // Anfang Methoden
   
-  public static void main(String[] args) {
-    new LoginGUI();
-  } // end of main
   
   public void bLogin_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
+	  //Verweis auf das Kundenportal
+	  //Schließen vom LoginFenster
+	  //->> Methode wird in Login.java implementiert
     
-  } // end of bLogin_ActionPerformed
+  } 
 
   public void bHierklicken_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
+     Login.RegistrierungButtonPressed();
     
-  } // end of bHierklicken_ActionPerformed
+  } 
 
-  // Ende Methoden
-} // end of class LoginGUI
+
+} 
