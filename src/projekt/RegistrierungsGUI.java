@@ -66,6 +66,7 @@ public class RegistrierungsGUI extends JFrame {
     lPasswortwiederholen.setFont(new Font("Dialog", Font.BOLD, 12));
     lPasswortwiederholen.setBackground(new Color(0xFFAFAF));
     lPasswortwiederholen.setOpaque(true);
+    lPasswortwiederholen.setHorizontalAlignment(SwingConstants.CENTER);
     cp.add(lPasswortwiederholen);
 
     lRegistrierung.setBounds(88, 32, 265, 57);
