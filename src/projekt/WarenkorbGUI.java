@@ -57,7 +57,7 @@ public class WarenkorbGUI extends JFrame {
     lGesamtPreis.setFont(new Font("Dialog", Font.BOLD, 20));
     cp.add(lGesamtPreis);
     bEinkaufabschliessen.setBounds(26, 676, 459, 65);
-    bEinkaufabschliessen.setText("Einkauf abschlieﬂen");
+    bEinkaufabschliessen.setText("Einkauf abschliessen");
     bEinkaufabschliessen.setMargin(new Insets(2, 2, 2, 2));
     bEinkaufabschliessen.setBackground(new Color(0xFFC800));
     bEinkaufabschliessen.setFont(new Font("Dialog", Font.BOLD, 22));
