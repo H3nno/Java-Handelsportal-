@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
 public class Login {
 
 	static String[][] Speichern;
@@ -20,22 +19,54 @@ public class Login {
 
 	public static void LoginButtonPressed() {
 
-		Login.DarfLogin();
+		boolean Allowed = Login.DarfLogin();
+		
+		
+		
 
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public static boolean DarfLogin() {
 
 		String Username = LoginGUI.jUsername.getText();
 		String Passwort = LoginGUI.jPasswordField1.getText();
 
 		Login.readCSV();
-	
-		
-
 
 		for (int i = 1; i < WieTief; i++) {
-			
+
 			if (Username.equals(Speichern[i][2])) {
 
 				if (Passwort.equals(Speichern[i][3])) {
@@ -50,23 +81,14 @@ public class Login {
 				}
 
 			}
-	
+
 		}
-		
+
 		System.out.println("Benutzer existiert nicht");
 		return false;
 
-
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
 	public static String[][] readCSV() {
 
 		String Pfad = "src\\projekt\\Benutzerdaten.csv";
@@ -93,7 +115,7 @@ public class Login {
 
 				for (int j = 0; j < 4; j++) {
 					Speichern[z][j] = Spalten[j];
-					//System.out.println("Speichern[" + z + "][" + j + "]: " + Speichern[z][j]);
+					// System.out.println("Speichern[" + z + "][" + j + "]: " + Speichern[z][j]);
 				}
 
 				z++;
