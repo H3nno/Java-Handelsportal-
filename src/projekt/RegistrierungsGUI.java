@@ -85,7 +85,7 @@ public class RegistrierungsGUI extends JFrame {
     lPasswort.setBackground(new Color(0xFFAFAF));
     lPasswort.setOpaque(true);
     bJetztregistrierenundzurueckzumLogin.setBounds(80, 400, 313, 41);
-    bJetztregistrierenundzurueckzumLogin.setText("Jetzt registrieren und zurück zum Login");
+    bJetztregistrierenundzurueckzumLogin.setText("Jetzt registrieren und zurueck zum Login");
     bJetztregistrierenundzurueckzumLogin.setMargin(new Insets(2, 2, 2, 2));
     bJetztregistrierenundzurueckzumLogin.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
@@ -112,7 +112,7 @@ public class RegistrierungsGUI extends JFrame {
     
     
     bZurueckzumLogin.setBounds(176, 464, 113, 33);
-    bZurueckzumLogin.setText("Zurück zum Login");
+    bZurueckzumLogin.setText("Zurueck zum Login");
     bZurueckzumLogin.setMargin(new Insets(2, 2, 2, 2));
     bZurueckzumLogin.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
