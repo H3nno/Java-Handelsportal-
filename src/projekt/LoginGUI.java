@@ -2,6 +2,9 @@ package projekt;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import javax.swing.*;
 import javax.swing.event.*;
 
@@ -9,13 +12,13 @@ public class LoginGUI extends JFrame {
   // Anfang Attribute
   private JLabel lEinkaufsladenonline = new JLabel();
   private JLabel lEroeffnetam1872021 = new JLabel();
-  private JTextField jTextField1 = new JTextField();
+  public static JTextField jUsername = new JTextField();
   private JLabel lBenutzername1 = new JLabel();
   private JLabel lPasswort = new JLabel();
   private JButton bLogin = new JButton();
   private JLabel lNochkeinKontoHierregistrieren = new JLabel();
   private JButton bHierklicken = new JButton();
-  private JPasswordField jPasswordField1 = new JPasswordField();
+  public static JPasswordField jPasswordField1 = new JPasswordField();
   // Ende Attribute
   
   public LoginGUI() { 
@@ -48,8 +51,8 @@ public class LoginGUI extends JFrame {
     lEroeffnetam1872021.setBackground(new Color(0xFFC800));
     lEroeffnetam1872021.setOpaque(true);
     cp.add(lEroeffnetam1872021);
-    jTextField1.setBounds(184, 264, 209, 33);
-    cp.add(jTextField1);
+    jUsername.setBounds(184, 264, 209, 33);
+    cp.add(jUsername);
     lBenutzername1.setBounds(40, 264, 129, 33);
     lBenutzername1.setText("Benutzername:");
     lBenutzername1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -67,7 +70,8 @@ public class LoginGUI extends JFrame {
     bLogin.setMargin(new Insets(2, 2, 2, 2));
     bLogin.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
-        bLogin_ActionPerformed(evt);
+				bLogin_ActionPerformed(evt);
+
       }
     });
     bLogin.setBackground(Color.CYAN);
@@ -98,7 +102,7 @@ public class LoginGUI extends JFrame {
   // Anfang Methoden
   
   
-  public void bLogin_ActionPerformed(ActionEvent evt) {
+  public void bLogin_ActionPerformed(ActionEvent evt){
 	  Login.LoginButtonPressed();
     
   } 
