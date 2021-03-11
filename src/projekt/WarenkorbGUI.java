@@ -3,13 +3,16 @@ package projekt;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.*;
 
 public class WarenkorbGUI extends JFrame {
-  // Anfang Attribute
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3925528618334271803L;
+// Anfang Attribute
   private JLabel lWarenkorb = new JLabel();
   private JList Warenkorb = new JList();
-    private DefaultListModel WarenkorbModel = new DefaultListModel();
+    private DefaultListModel WarenkorbModel = new DefaultListModel(); 
     private JScrollPane WarenkorbScrollPane = new JScrollPane(Warenkorb);
   private JLabel lGesamtPreis = new JLabel();
   private JButton bEinkaufabschliessen = new JButton();

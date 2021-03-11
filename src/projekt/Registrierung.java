@@ -10,6 +10,7 @@ public class Registrierung {
 	static int WieTief = 0;
 	static String[][] Speichern;
 
+	@SuppressWarnings("deprecation")
 	public static void Registrieren() {
 
 		RegistrierungsGUI.jStatus.setText("");
@@ -64,6 +65,7 @@ public class Registrierung {
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	@SuppressWarnings("deprecation")
 	public static boolean CheckPasswords() {
 
 		if (!RegistrierungsGUI.jPFPasswort1.getText().equals("")) {
@@ -102,9 +104,12 @@ public class Registrierung {
 
 		String Pfad = "src\\projekt\\Benutzerdaten.csv";
 		String line;
+		
+		BufferedReader BR1 = null;
+		BufferedReader BR = null;
 
 		try {
-			BufferedReader BR1 = new BufferedReader(new FileReader(Pfad));
+			BR1 = new BufferedReader(new FileReader(Pfad));
 
 			int z = 0;
 
@@ -116,7 +121,7 @@ public class Registrierung {
 
 			Speichern = new String[WieTief][4];
 
-			BufferedReader BR = new BufferedReader(new FileReader(Pfad));
+			BR = new BufferedReader(new FileReader(Pfad));
 
 			while ((line = BR.readLine()) != null) {
 

@@ -1,11 +1,8 @@
 package projekt;
 
-import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class Login {
 
@@ -23,7 +20,7 @@ public class Login {
 
 	public static void LoginButtonPressed() {
 
-		boolean Allowed = Login.DarfLogin();
+		//boolean Allowed = Login.DarfLogin();
 
 	}
 
@@ -33,6 +30,7 @@ public class Login {
 	public static boolean DarfLogin() {
 
 		String Username = LoginGUI.jUsername.getText();
+		@SuppressWarnings("deprecation")
 		String Passwort = LoginGUI.jPasswordField1.getText();
 
 		Login.readCSV();
@@ -67,9 +65,10 @@ public class Login {
 
 		String Pfad = "src\\projekt\\Benutzerdaten.csv";
 		String line;
-
+		BufferedReader BR1 = null;
+		BufferedReader BR = null;
 		try {
-			BufferedReader BR1 = new BufferedReader(new FileReader(Pfad));
+			BR1 = new BufferedReader(new FileReader(Pfad));
 
 			int z = 0;
 
@@ -81,7 +80,7 @@ public class Login {
 
 			Speichern = new String[WieTief][4];
 
-			BufferedReader BR = new BufferedReader(new FileReader(Pfad));
+			BR = new BufferedReader(new FileReader(Pfad));
 
 			while ((line = BR.readLine()) != null) {
 
@@ -100,6 +99,17 @@ public class Login {
 			e.printStackTrace();
 
 	}
+		finally {
+			
+			try {
+				BR1.close();
+				BR.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
 
 }
 }

@@ -3,11 +3,14 @@ package projekt;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.*;
 
 
 public class RegistrierungsGUI extends JFrame {
-  // Anfang Attribute
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5741969307186574684L;
+// Anfang Attribute
   private JLabel lPasswortwiederholen = new JLabel();
   private JLabel lVorname = new JLabel();
   private JLabel lNachname = new JLabel();

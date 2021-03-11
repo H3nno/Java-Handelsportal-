@@ -2,14 +2,14 @@ package projekt;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 import javax.swing.*;
-import javax.swing.event.*;
 
 public class LoginGUI extends JFrame {
-  // Anfang Attribute
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 512483451666563178L;
+// Anfang Attribute
   private JLabel lEinkaufsladenonline = new JLabel();
   private JLabel lEroeffnetam1872021 = new JLabel();
   public static JTextField jUsername = new JTextField();
