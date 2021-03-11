@@ -13,8 +13,8 @@ public class Main {
 		    
 		   LoginGUI LoginFenster = new LoginGUI();
 		   
-
-		   LoginFenster.dispose();
+		   new EinkaufsPortalGUI();
+		   
 		  
 		  
 		  }

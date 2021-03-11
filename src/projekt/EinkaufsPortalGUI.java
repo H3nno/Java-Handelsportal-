@@ -86,22 +86,20 @@ public class EinkaufsPortalGUI extends JFrame {
         
       
   
-  public static void main(String[] args) {
-    new EinkaufsPortalGUI();
-  } // end of main
+
   
   public void bIndenWarenkorb_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
+    // TODO hier Quelltext einfï¿½gen
     
   } // end of bIndenWarenkorb_ActionPerformed
 
   public void bIndenWarenkorb1_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
+    // TODO hier Quelltext einfï¿½gen
     
   } // end of bIndenWarenkorb1_ActionPerformed
 
   public void bZumWarenkorb_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
+    // TODO hier Quelltext einfï¿½gen
     
   } // end of bZumWarenkorb_ActionPerformed
 
