@@ -5,13 +5,6 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
-/**
- *
- * Beschreibung
- *
- * @version 1.0 vom 04.03.2021
- * @author 
- */
 
 public class EinkaufsPortalGUI extends JFrame {
   // Anfang Attribute
