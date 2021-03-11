@@ -15,11 +15,11 @@ public class RegistrierungsGUI extends JFrame {
   private JLabel lPasswort = new JLabel();
   private JLabel lRegistrierung = new JLabel();
   private JButton bJetztregistrierenundzurueckzumLogin = new JButton();
-  private JTextField jTFVorname = new JTextField();
-  private JTextField jTFNachname = new JTextField();
-  public JTextField jTFUsername = new JTextField();
-  public JPasswordField jPFPasswort1 = new JPasswordField();
-  public JPasswordField jPasswordField1 = new JPasswordField();
+  public static JTextField jTFVorname = new JTextField();
+  public static JTextField jTFNachname = new JTextField();
+  public static JTextField jTFUsername = new JTextField();
+  public static JPasswordField jPFPasswort1 = new JPasswordField();
+  public static JPasswordField jPasswordField1 = new JPasswordField();
   public static JLabel jStatus = new JLabel();
   private JButton bZurueckzumLogin = new JButton();
   // Ende Attribute

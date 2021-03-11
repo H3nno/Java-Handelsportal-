@@ -20,42 +20,10 @@ public class Login {
 	public static void LoginButtonPressed() {
 
 		boolean Allowed = Login.DarfLogin();
-		
-		
-		
 
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	//////////////////////////////////////////////////////////////////////////////////////////
 	
 	
 	public static boolean DarfLogin() {
@@ -88,8 +56,10 @@ public class Login {
 		return false;
 
 	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public static String[][] readCSV() {
+	public static void readCSV() {
 
 		String Pfad = "src\\projekt\\Benutzerdaten.csv";
 		String line;
@@ -115,20 +85,18 @@ public class Login {
 
 				for (int j = 0; j < 4; j++) {
 					Speichern[z][j] = Spalten[j];
-					// System.out.println("Speichern[" + z + "][" + j + "]: " + Speichern[z][j]);
 				}
 
 				z++;
 
 			}
-			return Speichern;
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 
 		}
-		return Speichern;
 
 	}
 
