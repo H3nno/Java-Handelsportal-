@@ -1,5 +1,6 @@
 package projekt;
 
+import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -13,7 +14,10 @@ public class Login {
 
 	public static void RegistrierungButtonPressed() {
 
+		
+		//LoginGUI.dispatchEvent(new WindowEvent(LoginGUI, WindowEvent.WINDOW_CLOSING));
 		new RegistrierungsGUI();
+		
 
 	}
 
@@ -94,10 +98,8 @@ public class Login {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-
-		}
 
 	}
 
+}
 }

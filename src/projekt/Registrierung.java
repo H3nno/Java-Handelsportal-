@@ -18,34 +18,39 @@ public class Registrierung {
 
 			if (Registrierung.CheckPasswords()) {
 
+				FileWriter writer = null;
+				
 				try {
-					FileWriter writer = new FileWriter("src\\projekt\\Benutzerdaten.csv", true);
+					
+					
+					writer = new FileWriter("src\\projekt\\Benutzerdaten.csv", true);
 
-					writer.append(RegistrierungsGUI.jTFVorname.getText());
-					writer.append(';');
-					writer.append(RegistrierungsGUI.jTFNachname.getText());
-					writer.append(';');
-					writer.append(RegistrierungsGUI.jTFUsername.getText());
-					writer.append(';');
-					writer.append(RegistrierungsGUI.jPFPasswort1.getText());
+					writer.append("" + RegistrierungsGUI.jTFVorname.getText());
+					writer.append(";");
+					writer.append("" + RegistrierungsGUI.jTFNachname.getText());
+					writer.append(";");
+					writer.append("" +RegistrierungsGUI.jTFUsername.getText());
+					writer.append(";");
+					writer.append("" +RegistrierungsGUI.jPFPasswort1.getText());
 
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				  finally{
+					  try {
+				  
+				      writer.flush();
+				      writer.close();
+				        } catch (IOException e) {
+				      e.printStackTrace();
+				}
+				  }
+				  
 
-			} else {
-
-				RegistrierungsGUI.jStatus.setText("Passwort Fehler");
-			}
-
+			} else {RegistrierungsGUI.jStatus.setText("Passwort Fehler");}
 		}
-
-		else {
-
-			RegistrierungsGUI.jStatus.setText("Benutzername Fehler");
-		}
-
+		else {RegistrierungsGUI.jStatus.setText("Benutzername Fehler");}
 	}
 
 	//////////////////////////////////////////
@@ -82,16 +87,10 @@ public class Registrierung {
 
 		for (int i = 1; i < WieTief; i++) {
 
-			if (Username.equals(Speichern[i][2])) {
-				return false;
-
+			if (Username.equals(Speichern[i][2])) {return false;}
 			}
 
-		}
-
-		if (Username.equals("")) {
-			return false;
-		}
+		if (Username.equals("")) {return false;}
 
 		return true;
 
@@ -135,10 +134,7 @@ public class Registrierung {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-
 		}
-
 	}
 
 }
