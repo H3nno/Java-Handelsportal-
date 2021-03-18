@@ -1,23 +1,25 @@
 package projekt;
 
+import java.awt.Window;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class Login {
 
+	
 	static String[][] Speichern;
 	static int WieTief = 0;
 
 	public static void RegistrierungButtonPressed() {
 
 		
-		//LoginGUI.dispatchEvent(new WindowEvent(LoginGUI, WindowEvent.WINDOW_CLOSING));
-		new RegistrierungsGUI();
+		//LoginFenster.dispose();
+		RegistrierungsGUI RegistrierungsFenster = new RegistrierungsGUI();
 		
-
+		
+		
 	}
-
 	public static void LoginButtonPressed() {
 
 		//boolean Allowed = Login.DarfLogin();

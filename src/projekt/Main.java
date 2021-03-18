@@ -1,15 +1,15 @@
 package projekt;
 
 
-public class Main {
+public class Main extends Login{
 		
 	
 	  public static void main(String[] args){
 		    
-		   LoginGUI LoginFenster = new LoginGUI();
-		   WarenkorbGUI waren = new WarenkorbGUI(); 
+		   Login LoginFenster = new Login();
+		   //WarenkorbGUI waren = new WarenkorbGUI(); 
 
-		   
+		   //LoginFenster.dispose();
 		   
 		   
 		  
