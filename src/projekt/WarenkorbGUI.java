@@ -2,25 +2,25 @@ package projekt;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Vector;
+
 import javax.swing.*;
+import javax.swing.event.*;
+import javax.swing.table.*;
 
 public class WarenkorbGUI extends JFrame {
-  /**
-	 * 
-	 */
-	private static final long serialVersionUID = 3925528618334271803L;
-// Anfang Attribute
+  // Anfang Attribute
   private JLabel lWarenkorb = new JLabel();
-  private JList Warenkorb = new JList();
-    private DefaultListModel WarenkorbModel = new DefaultListModel(); 
-    private JScrollPane WarenkorbScrollPane = new JScrollPane(Warenkorb);
   private JLabel lGesamtPreis = new JLabel();
   private JButton bEinkaufabschliessen = new JButton();
   private JLabel lPreiseintragen = new JLabel();
+  public static JTable jTable1 = new JTable(0, 2);
+  public static DefaultTableModel jTable1Model = (DefaultTableModel) jTable1.getModel();
+  private JScrollPane jTable1ScrollPane = new JScrollPane(jTable1);
+  public static int preisEintragen = 0;
   // Ende Attribute
   
   public WarenkorbGUI() { 
-    // Frame-Initialisierung
     super();
     setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     int frameWidth = 536; 
@@ -34,23 +34,9 @@ public class WarenkorbGUI extends JFrame {
     setResizable(false);
     Container cp = getContentPane();
     cp.setLayout(null);
+    
+    
     // Anfang Komponenten
-    
-    
-    lWarenkorb.setBounds(149, 15, 342, 76);
-    lWarenkorb.setText("Warenkorb");
-    lWarenkorb.setHorizontalAlignment(SwingConstants.CENTER);
-    lWarenkorb.setHorizontalTextPosition(SwingConstants.CENTER);
-    lWarenkorb.setBackground(new Color(0xFFAFAF));
-    lWarenkorb.setOpaque(true);
-    lWarenkorb.setFont(new Font("Dialog", Font.BOLD, 24));
-    cp.add(lWarenkorb);
-    Warenkorb.setModel(WarenkorbModel);
-    WarenkorbScrollPane.setBounds(20, 103, 470, 468);
-    Warenkorb.setToolTipText("Hier werden ihr Warenkorb angezeigt");
-    WarenkorbScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-    WarenkorbScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-    cp.add(WarenkorbScrollPane);
     lGesamtPreis.setBounds(24, 591, 206, 68);
     lGesamtPreis.setText("Gesamt Preis");
     lGesamtPreis.setHorizontalAlignment(SwingConstants.CENTER);
@@ -60,32 +46,57 @@ public class WarenkorbGUI extends JFrame {
     lGesamtPreis.setFont(new Font("Dialog", Font.BOLD, 20));
     cp.add(lGesamtPreis);
     bEinkaufabschliessen.setBounds(26, 676, 459, 65);
-    bEinkaufabschliessen.setText("Einkauf abschliessen");
+    bEinkaufabschliessen.setText("Einkauf abschließen");
     bEinkaufabschliessen.setMargin(new Insets(2, 2, 2, 2));
+    bEinkaufabschliessen.addActionListener(new ActionListener() { 
+      public void actionPerformed(ActionEvent evt) { 
+        bEinkaufabschliessen_ActionPerformed(evt);
+      }
+    });
     bEinkaufabschliessen.setBackground(new Color(0xFFC800));
     bEinkaufabschliessen.setFont(new Font("Dialog", Font.BOLD, 22));
     cp.add(bEinkaufabschliessen);
     lPreiseintragen.setBounds(236, 592, 254, 68);
-    lPreiseintragen.setText("Preis eintragen");
+    lPreiseintragen.setText(Integer.toString(preisEintragen)+"€");
     lPreiseintragen.setFont(new Font("Dialog", Font.BOLD, 22));
     lPreiseintragen.setBackground(Color.CYAN);
     lPreiseintragen.setOpaque(true);
     lPreiseintragen.setHorizontalAlignment(SwingConstants.CENTER);
     lPreiseintragen.setHorizontalTextPosition(SwingConstants.CENTER);
     cp.add(lPreiseintragen);
+    jTable1ScrollPane.setBounds(20, 103, 468, 470);
+    jTable1.getColumnModel().getColumn(0).setHeaderValue("Artikel");
+    jTable1.getColumnModel().getColumn(1).setHeaderValue("Preis");
+    jTable1.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+    jTable1.setToolTipText("Warenkorb");
+    jTable1.setRowHeight(25);
+    cp.add(jTable1ScrollPane);
+    lWarenkorb.setBounds(149, 15, 342, 76);
+    lWarenkorb.setText("Warenkorb");
+    lWarenkorb.setHorizontalAlignment(SwingConstants.CENTER);
+    lWarenkorb.setHorizontalTextPosition(SwingConstants.CENTER);
+    lWarenkorb.setBackground(Color.pink);
+    lWarenkorb.setOpaque(true);
+    lWarenkorb.setFont(new Font("Dialog", Font.BOLD, 20));
+    cp.add(lWarenkorb);
     // Ende Komponenten
-    bEinkaufabschliessen.addActionListener(new ActionListener() { 
-        public void actionPerformed(ActionEvent evt) { 
-          bEinkaufabschliessen_ActionPerformed(evt);
-          
-        }
-      });
     
     setVisible(true);
+  } 
+  
+  
+  
+  public static void bEinkaufabschliessen_ActionPerformed(ActionEvent evt) {
+    // TODO hier Quelltext einfügen
+    
   }
-  public void bEinkaufabschliessen_ActionPerformed(ActionEvent evt) {
-	    // TODO hier Quelltext einfügen
-	    
-  }// end of public JavaGUI
+  public static void Warenkorbhinzufügen(String Name, int Preis) {
+	  Vector row = new Vector();
+	  row.add(Name);
+	  row.add(Preis+"€");
+	  jTable1Model.addRow(row);
+	  preisEintragen += Preis;
+  }
+
+
 }
-  // Anfang Methoden
