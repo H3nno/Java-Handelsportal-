@@ -13,11 +13,11 @@ public class WarenkorbGUI extends JFrame {
   private JLabel lWarenkorb = new JLabel();
   private JLabel lGesamtPreis = new JLabel();
   private JButton bEinkaufabschliessen = new JButton();
-  public static JLabel lPreiseintragen = new JLabel();
-  public static JTable jTable1 = new JTable(0, 2);
-  public static DefaultTableModel jTable1Model = (DefaultTableModel) jTable1.getModel();
+  private JLabel lPreiseintragen = new JLabel();
+  private JTable jTable1 = new JTable(0, 2);
+  private DefaultTableModel jTable1Model = (DefaultTableModel) jTable1.getModel();
   private JScrollPane jTable1ScrollPane = new JScrollPane(jTable1);
-  public static int preisEintragen = 0;
+  private int preisEintragen = 0;
   // Ende Attribute
   
   public WarenkorbGUI() { 
@@ -70,6 +70,7 @@ public class WarenkorbGUI extends JFrame {
     jTable1.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
     jTable1.setToolTipText("Warenkorb");
     jTable1.setRowHeight(25);
+    jTable1.setDefaultEditor(Object.class, null);
     cp.add(jTable1ScrollPane);
     lWarenkorb.setBounds(149, 15, 342, 76);
     lWarenkorb.setText("Warenkorb");
@@ -90,7 +91,7 @@ public class WarenkorbGUI extends JFrame {
     // TODO hier Quelltext einfügen
     
   }
-  public static void Warenkorbhinzufügen(Ware ware) {
+  public void Warenkorbhinzufügen(Ware ware) {
 	  Vector row = new Vector();
 	  row.add(ware.getName());
 	  row.add(ware.getPreis()+"€");
