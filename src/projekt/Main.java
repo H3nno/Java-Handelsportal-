@@ -10,9 +10,7 @@ public class Main extends Login{
 		   EinkaufsPortalGUI ekpo = new EinkaufsPortalGUI();
 		   LoginGUI logo = new LoginGUI();
 		   WarenkorbGUI waren = new WarenkorbGUI();
-		   // Sachen zum Warenkorb hinzufuegen (String name, int Preis) :-)
-		   // Muss natürlich noch in die Einkaufsportal klasse und falls die Irgendwann mal fertig wird, wird auch das
-		   // Objekt üpbergeben und nicht String und int
+		   // Sachen zum Warenkorb hinzufuegen (Ware ware) :-)
 		   waren.Warenkorbhinzufügen(w1);
 		   
 		   logo.dispose();
