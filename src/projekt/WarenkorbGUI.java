@@ -90,12 +90,12 @@ public class WarenkorbGUI extends JFrame {
     // TODO hier Quelltext einfügen
     
   }
-  public static void Warenkorbhinzufügen(String Name, int Preis) {
+  public static void Warenkorbhinzufügen(Ware ware) {
 	  Vector row = new Vector();
-	  row.add(Name);
-	  row.add(Preis+"€");
+	  row.add(ware.getName());
+	  row.add(ware.getPreis()+"€");
 	  jTable1Model.addRow(row);
-	  preisEintragen = preisEintragen + Preis;
+	  preisEintragen = preisEintragen + ware.getPreis();
 	  lPreiseintragen.setText(Integer.toString(preisEintragen)+"€");
   }
 
