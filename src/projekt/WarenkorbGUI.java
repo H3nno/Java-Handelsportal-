@@ -8,7 +8,7 @@ import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.table.*;
 
-public class WarenkorbGUI extends JFrame {
+public class WarenkorbGUI{
   // Anfang Attribute
   private JLabel lWarenkorb = new JLabel();
   private JLabel lGesamtPreis = new JLabel();
@@ -18,21 +18,22 @@ public class WarenkorbGUI extends JFrame {
   private DefaultTableModel jTable1Model = (DefaultTableModel) jTable1.getModel();
   private JScrollPane jTable1ScrollPane = new JScrollPane(jTable1);
   private int preisEintragen = 0;
+  
+  JFrame Warenkorb = new JFrame();
   // Ende Attribute
   
   public WarenkorbGUI() { 
-    super();
-    setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    Warenkorb.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     int frameWidth = 536; 
     int frameHeight = 796;
-    setSize(frameWidth, frameHeight);
+    Warenkorb.setSize(frameWidth, frameHeight);
     Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-    int x = (d.width - getSize().width) / 2;
-    int y = (d.height - getSize().height) / 2;
-    setLocation(x, y);
-    setTitle("JavaGUI");
-    setResizable(false);
-    Container cp = getContentPane();
+    int x = (d.width - Warenkorb.getSize().width) / 2;
+    int y = (d.height - Warenkorb.getSize().height) / 2;
+    Warenkorb.setLocation(x, y);
+    Warenkorb.setTitle("JavaGUI");
+    Warenkorb.setResizable(false);
+    Container cp = Warenkorb.getContentPane();
     cp.setLayout(null);
     
     
@@ -46,7 +47,7 @@ public class WarenkorbGUI extends JFrame {
     lGesamtPreis.setFont(new Font("Dialog", Font.BOLD, 20));
     cp.add(lGesamtPreis);
     bEinkaufabschliessen.setBounds(26, 676, 459, 65);
-    bEinkaufabschliessen.setText("Einkauf abschließen");
+    bEinkaufabschliessen.setText("Zurueck");
     bEinkaufabschliessen.setMargin(new Insets(2, 2, 2, 2));
     bEinkaufabschliessen.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
@@ -82,13 +83,14 @@ public class WarenkorbGUI extends JFrame {
     cp.add(lWarenkorb);
     // Ende Komponenten
     
-    setVisible(true);
+    Warenkorb.setVisible(true);
   } 
   
   
   
-  public static void bEinkaufabschliessen_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
+  public void bEinkaufabschliessen_ActionPerformed(ActionEvent evt) {
+      Warenkorb.dispose();
+      new EinkaufsPortalGUI();
     
   }
   public void Warenkorbhinzufügen(Ware ware) {

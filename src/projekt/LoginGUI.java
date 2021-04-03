@@ -142,6 +142,7 @@ public class LoginGUI{
 	  if(Darf) {	  
 		  System.out.println("DU DARFST!  EHRENMANN");
 		  Login.dispose();
+		  new EinkaufsPortalGUI();
 	  } 	
   } 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////

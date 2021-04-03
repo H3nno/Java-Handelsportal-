@@ -22,33 +22,32 @@ import javax.swing.event.*;
  * @author 
  */
 
-public class EinkaufsPortalGUI extends JFrame {
+public class EinkaufsPortalGUI{
   // Anfang Attribute
   private ArrayList<Ware> list = new ArrayList<>();
   private JLabel lEinkaufsportal = new JLabel();
   private JList jList1 = new JList(new Vector<Ware>(list));
-    private DefaultListModel jList1Model = new DefaultListModel();
-    private JScrollPane jList1ScrollPane = new JScrollPane(jList1);
+  private DefaultListModel jList1Model = new DefaultListModel();
+  private JScrollPane jList1ScrollPane = new JScrollPane(jList1);
   private JButton bWarenkorbhinzufuegen = new JButton();
   private JButton bZumWarenkorb = new JButton();
   private JTextArea jTextArea1 = new JTextArea("");
-    private JScrollPane jTextArea1ScrollPane = new JScrollPane(jTextArea1);
+  private JScrollPane jTextArea1ScrollPane = new JScrollPane(jTextArea1);
   // Ende Attribute
-  
+  JFrame EinkaufsPortal = new JFrame();
   public EinkaufsPortalGUI() { 
     // Frame-Initialisierung
-    super();
-    setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    EinkaufsPortal.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     int frameWidth = 891; 
     int frameHeight = 600;
-    setSize(frameWidth, frameHeight);
+    EinkaufsPortal.setSize(frameWidth, frameHeight);
     Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-    int x = (d.width - getSize().width) / 2;
-    int y = (d.height - getSize().height) / 2;
-    setLocation(x, y);
-    setTitle("Einkaufsportal");
-    setResizable(true);
-    Container cp = getContentPane();
+    int x = (d.width - EinkaufsPortal.getSize().width) / 2;
+    int y = (d.height - EinkaufsPortal.getSize().height) / 2;
+    EinkaufsPortal.setLocation(x, y);
+    EinkaufsPortal.setTitle("Einkaufsportal");
+    EinkaufsPortal.setResizable(true);
+    Container cp = EinkaufsPortal.getContentPane();
     cp.setLayout(null);
     // Anfang Komponenten
     
@@ -99,7 +98,7 @@ public class EinkaufsPortalGUI extends JFrame {
     cp.add(jTextArea1ScrollPane);
     // Ende Komponenten
     
-    setVisible(true);
+    EinkaufsPortal.setVisible(true);
   } // end of public Einkaufsportal
   
   // Anfang Methoden
@@ -110,7 +109,8 @@ public class EinkaufsPortalGUI extends JFrame {
   } // end of bWarenkorbhinzufuegen_ActionPerformed
 
   public void bZumWarenkorb_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
+	  EinkaufsPortal.dispose();
+	  new WarenkorbGUI();
     
   } // end of bZumWarenkorb_ActionPerformed
   public void Jlisthinzu(Ware ware) {
