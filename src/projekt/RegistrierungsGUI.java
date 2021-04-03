@@ -124,7 +124,7 @@ public class RegistrierungsGUI{
     
     
     
-    bZurueckzumLogin.setBounds(176, 464, 113, 33);
+    bZurueckzumLogin.setBounds(166, 464, 150, 33);
     bZurueckzumLogin.setText("Zurueck zum Login");
     bZurueckzumLogin.setMargin(new Insets(2, 2, 2, 2));
     bZurueckzumLogin.addActionListener(new ActionListener() { 

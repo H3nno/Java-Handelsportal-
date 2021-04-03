@@ -147,6 +147,8 @@ public class LoginGUI{
 		  NAME = jUsername.getText();
 		  Login.dispose();
 		  new EinkaufsPortalGUI();
+		  jUsername.setText("");
+		  jPasswordField1.setText("");
 	  } 	
   } 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////

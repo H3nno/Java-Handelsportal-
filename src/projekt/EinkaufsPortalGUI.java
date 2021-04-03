@@ -100,7 +100,12 @@ public class EinkaufsPortalGUI{
     cp.add(admin);
    
     
-    Benutzerverwaltung.setBounds(702,10, 150, 30);
+    AngemeldetAls.setBounds(700,10, 150, 30);
+    AngemeldetAls.setText("Angemeldet als: " + LoginGUI.NAME);
+    
+    cp.add(AngemeldetAls);
+    
+    Benutzerverwaltung.setBounds(700,50, 150, 30);
     Benutzerverwaltung.setText("Benutzerverwaltung");
     Benutzerverwaltung.setBackground(Color.CYAN);
     Benutzerverwaltung.setMargin(new Insets(2, 2, 2, 2));
@@ -109,7 +114,7 @@ public class EinkaufsPortalGUI{
     	  Benutzerverwaltung_ActionPerformed(evt);}});
     cp.add(Benutzerverwaltung);
     
-    Abmelden.setBounds(702,50, 150, 30);
+    Abmelden.setBounds(700,90, 150, 30);
     Abmelden.setText("Abmelden");
     Abmelden.setBackground(Color.CYAN);
     Abmelden.setMargin(new Insets(2, 2, 2, 2));
@@ -133,7 +138,7 @@ public class EinkaufsPortalGUI{
     bWarenkorbhinzufuegen.setBackground(new Color(0xFFC800));
     bWarenkorbhinzufuegen.setFont(new Font("Dialog", Font.BOLD, 16));
     cp.add(bWarenkorbhinzufuegen);
-    bZumWarenkorb.setBounds(702, 478, 155, 49);
+    bZumWarenkorb.setBounds(700, 478, 155, 49);
     bZumWarenkorb.setText("Zum Warenkorb");
     bZumWarenkorb.setMargin(new Insets(2, 2, 2, 2));
     bZumWarenkorb.addActionListener(new ActionListener() { 
