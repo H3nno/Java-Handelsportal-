@@ -52,6 +52,7 @@ public class EinkaufsPortalGUI extends JFrame {
     cp.setLayout(null);
     // Anfang Komponenten
     
+    
     lEinkaufsportal.setBounds(285, 34, 270, 76);
     lEinkaufsportal.setText("Einkaufsportal");
     lEinkaufsportal.setHorizontalAlignment(SwingConstants.CENTER);
