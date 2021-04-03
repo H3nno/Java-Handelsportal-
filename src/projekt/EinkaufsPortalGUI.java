@@ -13,6 +13,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -26,16 +27,21 @@ public class EinkaufsPortalGUI{
   // Anfang Attribute
   private ArrayList<Ware> list = new ArrayList<>();
   private JLabel lEinkaufsportal = new JLabel();
-  private JList jList1 = new JList(new Vector<Ware>(list));
   private DefaultListModel jList1Model = new DefaultListModel();
-  private JScrollPane jList1ScrollPane = new JScrollPane(jList1);
   private JButton bWarenkorbhinzufuegen = new JButton();
   private JButton bZumWarenkorb = new JButton();
   private JTextArea jTextArea1 = new JTextArea("");
   private JScrollPane jTextArea1ScrollPane = new JScrollPane(jTextArea1);
+  private JList<Ware> list_1 = new JList();
   // Ende Attribute
+  DefaultListModel<Ware> Modell = new DefaultListModel<>();
   JFrame EinkaufsPortal = new JFrame();
   public EinkaufsPortalGUI() { 
+	//Waren erschaffen
+	  Modell.addElement(new Ware("Henning",0,"leichte Erstinstallation"));
+	  Modell.addElement(new Ware("Jermy",10,"schon Vorkonfiguriert"));
+	  Modell.addElement(new Ware("Kevin",20,"schwer zu bedienen"));
+	  Modell.addElement(new Ware("Marcelo",30,"Marcelooooo"));
     // Frame-Initialisierung
     EinkaufsPortal.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     int frameWidth = 891; 
@@ -50,8 +56,19 @@ public class EinkaufsPortalGUI{
     Container cp = EinkaufsPortal.getContentPane();
     cp.setLayout(null);
     // Anfang Komponenten
-    
-    
+    //JList addElement
+    list_1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+		
+		@Override
+		public void valueChanged(ListSelectionEvent arg0) {
+			Ware p = list_1.getSelectedValue();
+			jTextArea1.setText(p.getBeschreibung()+ '\n'+'\n' +"Preis : " + p.getPreis()+"€");
+			
+		}
+	});
+    list_1.setModel(Modell);
+    list_1.setBounds(24, 148, 338, 324);
+    EinkaufsPortal.getContentPane().add(list_1);
     lEinkaufsportal.setBounds(285, 34, 270, 76);
     lEinkaufsportal.setText("Einkaufsportal");
     lEinkaufsportal.setHorizontalAlignment(SwingConstants.CENTER);
@@ -61,17 +78,6 @@ public class EinkaufsPortalGUI{
     lEinkaufsportal.setBackground(new Color(0xFFAFAF));
     lEinkaufsportal.setOpaque(true);
     cp.add(lEinkaufsportal);
-    jList1.setModel(jList1Model);
-    jList1ScrollPane.setBounds(57, 144, 294, 324);
-    jList1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-    jList1.setFont(new Font("Dialog", Font.BOLD, 16));
-    jList1.setDragEnabled(false);
-    jList1.addFocusListener(new FocusAdapter() { 
-      public void focusGained(FocusEvent evt) { 
-        jList1_FocusGained(evt);
-      }
-    });
-    cp.add(jList1ScrollPane);
     bWarenkorbhinzufuegen.setBounds(59, 478, 291, 65);
     bWarenkorbhinzufuegen.setText("ZumWarenkorb hinzufuegen");
     bWarenkorbhinzufuegen.setMargin(new Insets(2, 2, 2, 2));
@@ -96,12 +102,19 @@ public class EinkaufsPortalGUI{
     cp.add(bZumWarenkorb);
     jTextArea1ScrollPane.setBounds(378, 148, 416, 324);
     cp.add(jTextArea1ScrollPane);
+    
+    
+    
     // Ende Komponenten
     
     EinkaufsPortal.setVisible(true);
   } // end of public Einkaufsportal
   
   // Anfang Methoden
+  private void jListMouseClicked(ListSelectionEvent evt) {
+	  String selected = list_1.getSelectedValue().toString();
+	  System.out.println(selected);
+  }
   
   public void bWarenkorbhinzufuegen_ActionPerformed(ActionEvent evt) {
     // TODO hier Quelltext einfügen
@@ -113,14 +126,5 @@ public class EinkaufsPortalGUI{
 	  new WarenkorbGUI();
     
   } // end of bZumWarenkorb_ActionPerformed
-  public void Jlisthinzu(Ware ware) {
-	  list.add(ware);
-  }
-
-  public void jList1_FocusGained(FocusEvent evt) {
-    
-    
-  } // end of jList1_FocusGained
-
-  // Ende Methoden
+ 
 } // end of class Einkaufsportal

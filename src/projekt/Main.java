@@ -8,7 +8,9 @@ public class Main{
 		   
 		   
 		   
-		   new LoginGUI();
+		   //new LoginGUI();
+		   new EinkaufsPortalGUI();
+		   
 		   
 		   
 		   

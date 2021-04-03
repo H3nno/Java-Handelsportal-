@@ -15,7 +15,6 @@ public class WarenkorbGUI{
   private JButton bEinkaufabschliessen = new JButton();
   private JLabel lPreiseintragen = new JLabel();
   private JTable jTable1 = new JTable(0, 2);
-  private DefaultTableModel jTable1Model = (DefaultTableModel) jTable1.getModel();
   private JScrollPane jTable1ScrollPane = new JScrollPane(jTable1);
   private int preisEintragen = 0;
   
@@ -94,12 +93,7 @@ public class WarenkorbGUI{
     
   }
   public void Warenkorbhinzufügen(Ware ware) {
-	  Vector row = new Vector();
-	  row.add(ware.getName());
-	  row.add(ware.getPreis()+"€");
-	  jTable1Model.addRow(row);
-	  preisEintragen = preisEintragen + ware.getPreis();
-	  lPreiseintragen.setText(Integer.toString(preisEintragen)+"€");
+	 
   }
 
 
