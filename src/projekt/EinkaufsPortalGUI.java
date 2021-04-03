@@ -22,12 +22,12 @@ public class EinkaufsPortalGUI{
   private JButton bWarenkorbhinzufuegen = new JButton();
   private JButton bZumWarenkorb = new JButton();
   private JButton admin = new JButton();
-  
+  private Ware temp;
   private JLabel AngemeldetAls = new JLabel();
   private JButton Benutzerverwaltung = new JButton();
   private JButton Abmelden = new JButton();
-  
-  
+  private JLabel lblNewLabel = new JLabel("Artikel im Warenkorb : "+WarenkorbGUI.warenlist.size());
+  private JLabel lblNewLabel_1 = new JLabel("Guthaben :");
   
   private JTextArea jTextArea1 = new JTextArea("");
   private JScrollPane jTextArea1ScrollPane = new JScrollPane(jTextArea1);
@@ -63,8 +63,8 @@ public class EinkaufsPortalGUI{
 		
 		@Override
 		public void valueChanged(ListSelectionEvent arg0) {
-			Ware p = list_1.getSelectedValue();
-			jTextArea1.setText(p.getBeschreibung()+ '\n'+'\n' +"Preis : " + p.getPreis()+"€");
+			temp = list_1.getSelectedValue();
+			jTextArea1.setText(temp.getBeschreibung()+ '\n'+'\n' +"Preis : " + temp.getPreis()+"€");
 		}
 	});
     list_1.setModel(Modell);
@@ -142,6 +142,10 @@ public class EinkaufsPortalGUI{
     cp.add(bZumWarenkorb);
     jTextArea1ScrollPane.setBounds(378, 148, 416, 324);
     cp.add(jTextArea1ScrollPane);
+    lblNewLabel.setBounds(700, 530, 155, 13);
+    cp.add(lblNewLabel);
+    lblNewLabel_1.setBounds(700, 34, 150, 13);
+    cp.add(lblNewLabel_1);
     
     
     
@@ -153,13 +157,15 @@ public class EinkaufsPortalGUI{
   // Anfang Methoden
   
   public void bWarenkorbhinzufuegen_ActionPerformed(ActionEvent evt) {
-	 
+     WarenkorbGUI.warenlist.add(temp);
+	 lblNewLabel.setText("Artikel im Warenkorb : "+WarenkorbGUI.warenlist.size());
     
   } // end of bWarenkorbhinzufuegen_ActionPerformed
 
   public void bZumWarenkorb_ActionPerformed(ActionEvent evt) {
-	  EinkaufsPortal.dispose();
 	  new WarenkorbGUI();
+	  EinkaufsPortal.dispose();
+	  
     
   }
   
@@ -182,11 +188,12 @@ public class EinkaufsPortalGUI{
   public void Abmelden_ActionPerformed(ActionEvent evt) {
 	  new LoginGUI();
 	  EinkaufsPortal.dispose();
+	  
+	  
     
   }
   public void Benutzerverwaltung_ActionPerformed(ActionEvent evt) {
 	  System.out.println("Benutzerverwaltung");
     
   }
- 
 } // end of class Einkaufsportal
