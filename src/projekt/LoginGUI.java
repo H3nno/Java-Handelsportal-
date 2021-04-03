@@ -21,6 +21,7 @@ public class LoginGUI/* extends JFrame*/ {
   private JLabel lPasswort = new JLabel();
   private JButton bLogin = new JButton();
   private JLabel lNochkeinKontoHierregistrieren = new JLabel();
+  private static JLabel lStatus = new JLabel();
   private JButton bHierklicken = new JButton();
   public static JPasswordField jPasswordField1 = new JPasswordField();
   // Ende Attribute
@@ -96,6 +97,11 @@ public class LoginGUI/* extends JFrame*/ {
     lNochkeinKontoHierregistrieren.setText("Noch kein Konto? Hier registrieren:");
     lNochkeinKontoHierregistrieren.setHorizontalAlignment(SwingConstants.CENTER);
     cp.add(lNochkeinKontoHierregistrieren);
+    
+    lStatus.setBounds(200,360,200,33);
+    lStatus.setText("");
+    cp.add(lStatus);
+    
     bHierklicken.setBounds(280, 416, 113, 33);
     bHierklicken.setText("Hier klicken");
     bHierklicken.setMargin(new Insets(2, 2, 2, 2));
@@ -173,12 +179,12 @@ public class LoginGUI/* extends JFrame*/ {
 
 				if (Passwort.equals(Speichern[i][3])) {
 
-					System.out.println("Test erfolgreich");
+					lStatus.setText("Erfolgreich");
 					return true;
 
 				} else {
 
-					System.out.println("Passwort falsch");
+					lStatus.setText("Passwort falsch");
 					return false;
 				}
 
@@ -186,7 +192,7 @@ public class LoginGUI/* extends JFrame*/ {
 
 		}
 
-		System.out.println("Benutzer existiert nicht");
+		lStatus.setText("Benutzer existiert nicht");
 		return false;
 
 	}
