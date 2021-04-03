@@ -1,6 +1,7 @@
 package projekt;
 
 import java.awt.*;
+import java.awt.color.ColorSpace;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -30,6 +31,14 @@ public class EinkaufsPortalGUI{
   private DefaultListModel jList1Model = new DefaultListModel();
   private JButton bWarenkorbhinzufuegen = new JButton();
   private JButton bZumWarenkorb = new JButton();
+  private JButton admin = new JButton();
+  
+  private JLabel AngemeldetAls = new JLabel();
+  private JButton Benutzerverwaltung = new JButton();
+  private JButton Abmelden = new JButton();
+  
+  
+  
   private JTextArea jTextArea1 = new JTextArea("");
   private JScrollPane jTextArea1ScrollPane = new JScrollPane(jTextArea1);
   private JList<Ware> list_1 = new JList();
@@ -55,6 +64,9 @@ public class EinkaufsPortalGUI{
     EinkaufsPortal.setResizable(true);
     Container cp = EinkaufsPortal.getContentPane();
     cp.setLayout(null);
+    
+    
+    
     // Anfang Komponenten
     //JList addElement
     list_1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -77,6 +89,43 @@ public class EinkaufsPortalGUI{
     lEinkaufsportal.setBackground(new Color(0xFFAFAF));
     lEinkaufsportal.setOpaque(true);
     cp.add(lEinkaufsportal);
+    admin.setBounds(24,28, 150, 50);
+    admin.setText("Verwaltung");
+    admin.setBackground(Color.CYAN);
+    admin.setMargin(new Insets(2, 2, 2, 2));
+    admin.addActionListener(new ActionListener() { 
+      public void actionPerformed(ActionEvent evt) { 
+				admin_ActionPerformed(evt);}});
+    cp.add(admin);
+   
+    
+    AngemeldetAls.setBounds(700,10, 150, 30);
+    AngemeldetAls.setText("Angemeldet als: " + LoginGUI.NAME);
+    
+    cp.add(AngemeldetAls);
+    
+    Benutzerverwaltung.setBounds(700,50, 150, 30);
+    Benutzerverwaltung.setText("Benutzerverwaltung");
+    Benutzerverwaltung.setBackground(Color.CYAN);
+    Benutzerverwaltung.setMargin(new Insets(2, 2, 2, 2));
+    Benutzerverwaltung.addActionListener(new ActionListener() { 
+      public void actionPerformed(ActionEvent evt) { 
+    	  Benutzerverwaltung_ActionPerformed(evt);}});
+    cp.add(Benutzerverwaltung);
+    
+    Abmelden.setBounds(700,90, 150, 30);
+    Abmelden.setText("Abmelden");
+    Abmelden.setBackground(Color.CYAN);
+    Abmelden.setMargin(new Insets(2, 2, 2, 2));
+    Abmelden.addActionListener(new ActionListener() { 
+      public void actionPerformed(ActionEvent evt) { 
+				Abmelden_ActionPerformed(evt);}});
+    cp.add(Abmelden);
+    
+    
+    
+    
+   
     bWarenkorbhinzufuegen.setBounds(59, 478, 291, 65);
     bWarenkorbhinzufuegen.setText("ZumWarenkorb hinzufuegen");
     bWarenkorbhinzufuegen.setMargin(new Insets(2, 2, 2, 2));
@@ -88,7 +137,7 @@ public class EinkaufsPortalGUI{
     bWarenkorbhinzufuegen.setBackground(new Color(0xFFC800));
     bWarenkorbhinzufuegen.setFont(new Font("Dialog", Font.BOLD, 16));
     cp.add(bWarenkorbhinzufuegen);
-    bZumWarenkorb.setBounds(702, 55, 155, 49);
+    bZumWarenkorb.setBounds(700, 478, 155, 49);
     bZumWarenkorb.setText("Zum Warenkorb");
     bZumWarenkorb.setMargin(new Insets(2, 2, 2, 2));
     bZumWarenkorb.addActionListener(new ActionListener() { 
@@ -120,6 +169,32 @@ public class EinkaufsPortalGUI{
 	  EinkaufsPortal.dispose();
 	  new WarenkorbGUI();
     
-  } // end of bZumWarenkorb_ActionPerformed
+  }
+  
+  public void admin_ActionPerformed(ActionEvent evt) {
+	  
+	  if(LoginGUI.NAME != null) {
+	  
+	  if(LoginGUI.NAME.equals("admin"))
+	  {
+		  System.out.println("JA ADMIN");
+		  
+	  }
+	  else
+	  {
+		  System.out.println("NEEEIN :(");
+	  }
+	  }
+    
+  }
+  public void Abmelden_ActionPerformed(ActionEvent evt) {
+	  new LoginGUI();
+	  EinkaufsPortal.dispose();
+    
+  }
+  public void Benutzerverwaltung_ActionPerformed(ActionEvent evt) {
+	  System.out.println("Benutzerverwaltung");
+    
+  }
  
 } // end of class Einkaufsportal

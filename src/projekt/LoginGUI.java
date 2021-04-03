@@ -27,6 +27,8 @@ public class LoginGUI{
   static String[][] Speichern;
   static int WieTief = 0;
   
+  public static String NAME;
+  
   JFrame Login = new JFrame();
   
   
@@ -139,10 +141,14 @@ public class LoginGUI{
   
   public void bLogin_ActionPerformed(ActionEvent evt){
 	  boolean Darf = LoginGUI.DarfLogin();
-	  if(Darf) {	  
-		  System.out.println("DU DARFST!  EHRENMANN");
+	  if(Darf) {
+		  
+
+		  NAME = jUsername.getText();
 		  Login.dispose();
 		  new EinkaufsPortalGUI();
+		  jUsername.setText("");
+		  jPasswordField1.setText("");
 	  } 	
   } 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
