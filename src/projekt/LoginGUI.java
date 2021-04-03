@@ -9,11 +9,7 @@ import java.io.IOException;
 import javax.swing.*;
 
 public class LoginGUI/* extends JFrame*/ {
-  /**
-	 * 
-	 */
-	private static final long serialVersionUID = 512483451666563178L;
-// Anfang Attribute
+  // Anfang Attribute
   private JLabel lEinkaufsladenonline = new JLabel();
   private JLabel lEroeffnetam1872021 = new JLabel();
   public static JTextField jUsername = new JTextField();
@@ -142,112 +138,69 @@ public class LoginGUI/* extends JFrame*/ {
 
   
   public void bLogin_ActionPerformed(ActionEvent evt){
-
 	  boolean Darf = LoginGUI.DarfLogin();
-	  if(Darf) {
-		  
+	  if(Darf) {	  
 		  System.out.println("DU DARFST!  EHRENMANN");
 		  Login.dispose();
-	  }
-	  
-	  
-	  
-	  
-	  	
+	  } 	
   } 
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   public void bHierklicken_ActionPerformed(ActionEvent evt) {
-	  
-	  RegistrierungsGUI Registrierung = new RegistrierungsGUI();
-	  Login.dispose();
-    
-  } 
-  
-
-  //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	  new RegistrierungsGUI();
+	  Login.dispose(); 
+  }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public static boolean DarfLogin() {
-
 		String Username = jUsername.getText();
 		@SuppressWarnings("deprecation")
 		String Passwort = jPasswordField1.getText();
-
 		LoginGUI.readCSV();
-
 		for (int i = 1; i < WieTief; i++) {
-
 			if (Username.equals(Speichern[i][2])) {
-
 				if (Passwort.equals(Speichern[i][3])) {
-
 					lStatus.setText("Erfolgreich");
 					return true;
-
 				} else {
-
 					lStatus.setText("Passwort falsch");
 					return false;
 				}
-
 			}
-
 		}
-
 		lStatus.setText("Benutzer existiert nicht");
 		return false;
-
 	}
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public static void readCSV() {
-
 		String Pfad = "src\\projekt\\Benutzerdaten.csv";
 		String line;
 		BufferedReader BR1 = null;
 		BufferedReader BR = null;
 		try {
 			BR1 = new BufferedReader(new FileReader(Pfad));
-
 			int z = 0;
-
-			
 			while ((line = BR1.readLine()) != null) {
-
 				WieTief++;
-
 			}
-
 			Speichern = new String[WieTief][4];
-
 			BR = new BufferedReader(new FileReader(Pfad));
-
 			while ((line = BR.readLine()) != null) {
-
 				String[] Spalten = line.split(";");
-
 				for (int j = 0; j < 4; j++) {
 					Speichern[z][j] = Spalten[j];
 				}
-
 				z++;
-
 			}
-
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-
 	}
 		finally {
-			
 			try {
 				BR1.close();
 				BR.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 		}
-
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

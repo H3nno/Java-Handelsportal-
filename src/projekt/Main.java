@@ -8,7 +8,7 @@ public class Main{
 		   
 		   
 		   
-		   LoginGUI logo = new LoginGUI();
+		   new LoginGUI();
 		   
 		   
 		   
