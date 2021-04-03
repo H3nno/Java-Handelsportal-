@@ -86,8 +86,10 @@ public class EinkaufsPortalGUI{
     admin.addActionListener(new ActionListener() { 
       public void actionPerformed(ActionEvent evt) { 
 				admin_ActionPerformed(evt);}});
+    if(LoginGUI.NAME.equals("admin"))
+    {
     cp.add(admin);
-   
+    }
     
     AngemeldetAls.setBounds(700,10, 150, 30);
     AngemeldetAls.setText("Angemeldet als: " + LoginGUI.NAME);
