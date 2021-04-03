@@ -140,7 +140,6 @@ public class LoginGUI{
   public void bLogin_ActionPerformed(ActionEvent evt){
 	  boolean Darf = LoginGUI.DarfLogin();
 	  if(Darf) {	  
-		  System.out.println("DU DARFST!  EHRENMANN");
 		  Login.dispose();
 		  new EinkaufsPortalGUI();
 	  } 	
