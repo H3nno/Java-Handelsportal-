@@ -63,7 +63,6 @@ public class EinkaufsPortalGUI{
 		public void valueChanged(ListSelectionEvent arg0) {
 			Ware p = list_1.getSelectedValue();
 			jTextArea1.setText(p.getBeschreibung()+ '\n'+'\n' +"Preis : " + p.getPreis()+"€");
-			
 		}
 	});
     list_1.setModel(Modell);
@@ -111,13 +110,9 @@ public class EinkaufsPortalGUI{
   } // end of public Einkaufsportal
   
   // Anfang Methoden
-  private void jListMouseClicked(ListSelectionEvent evt) {
-	  String selected = list_1.getSelectedValue().toString();
-	  System.out.println(selected);
-  }
   
   public void bWarenkorbhinzufuegen_ActionPerformed(ActionEvent evt) {
-    // TODO hier Quelltext einfügen
+	 
     
   } // end of bWarenkorbhinzufuegen_ActionPerformed
 
