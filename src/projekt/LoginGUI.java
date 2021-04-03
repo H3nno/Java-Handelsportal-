@@ -8,7 +8,7 @@ import java.io.IOException;
 
 import javax.swing.*;
 
-public class LoginGUI/* extends JFrame*/ {
+public class LoginGUI{
   // Anfang Attribute
   private JLabel lEinkaufsladenonline = new JLabel();
   private JLabel lEroeffnetam1872021 = new JLabel();
