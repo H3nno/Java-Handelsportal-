@@ -10,7 +10,7 @@ import java.io.IOException;
 import javax.swing.*;
 
 
-public class RegistrierungsGUI extends JFrame {
+public class RegistrierungsGUI{
   /**
 	 * 
 	 */
@@ -34,7 +34,7 @@ public class RegistrierungsGUI extends JFrame {
   
   
   
-  
+  JFrame Registrierung = new JFrame();
   static int WieTief = 0;
   static String[][] Speichern;
   
@@ -43,18 +43,18 @@ public class RegistrierungsGUI extends JFrame {
   
   public RegistrierungsGUI() { 
     // Frame-Initialisierung
-    super();
-    setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    //super();
+    Registrierung.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     int frameWidth = 498; 
     int frameHeight = 550;
-    setSize(frameWidth, frameHeight);
+    Registrierung.setSize(frameWidth, frameHeight);
     Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-    int x = (d.width - getSize().width) / 2;
-    int y = (d.height - getSize().height) / 2;
-    setLocation(x, y);
-    setTitle("RegistrierungGUI");
-    setResizable(false);
-    Container cp = getContentPane();
+    int x = (d.width - Registrierung.getSize().width) / 2;
+    int y = (d.height - Registrierung.getSize().height) / 2;
+    Registrierung.setLocation(x, y);
+    Registrierung.setTitle("RegistrierungGUI");
+    Registrierung.setResizable(false);
+    Container cp = Registrierung.getContentPane();
     cp.setLayout(null);
     // Anfang Komponenten
     
@@ -140,7 +140,7 @@ public class RegistrierungsGUI extends JFrame {
     cp.add(bZurueckzumLogin);
     // Ende Komponenten
     
-    setVisible(true);
+    Registrierung.setVisible(true);
   } 
   
  
@@ -164,7 +164,8 @@ public class RegistrierungsGUI extends JFrame {
   
   
   public void bZurueckzumLogin_ActionPerformed(ActionEvent evt) {
-	    //Zurück	    
+	    LoginGUI logo = new LoginGUI();
+	    Registrierung.dispose();
 	  }
 
   
@@ -181,6 +182,7 @@ public class RegistrierungsGUI extends JFrame {
 					
 					
 					writer = new FileWriter("src\\projekt\\Benutzerdaten.csv", true);
+					writer.append("\n");
 
 					writer.append("" + RegistrierungsGUI.jTFVorname.getText());
 					writer.append(";");
@@ -190,6 +192,10 @@ public class RegistrierungsGUI extends JFrame {
 					writer.append(";");
 					writer.append("" +RegistrierungsGUI.jPFPasswort1.getText());
 
+					
+					LoginGUI logo = new LoginGUI();
+					Registrierung.dispose();
+					
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

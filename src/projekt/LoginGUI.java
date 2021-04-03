@@ -8,7 +8,7 @@ import java.io.IOException;
 
 import javax.swing.*;
 
-public class LoginGUI extends JFrame {
+public class LoginGUI/* extends JFrame*/ {
   /**
 	 * 
 	 */
@@ -30,23 +30,27 @@ public class LoginGUI extends JFrame {
   static String[][] Speichern;
   static int WieTief = 0;
   
+  JFrame Login = new JFrame();
   
   
   
   public LoginGUI() { 
     // Frame-Initialisierung
-    super();
-    setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+	  
+	//JFrame Login = new JFrame();
+	  
+    //super();
+    Login.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     int frameWidth = 615; 
     int frameHeight = 571;
-    setSize(frameWidth, frameHeight);
+    Login.setSize(frameWidth, frameHeight);
     Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-    int x = (d.width - getSize().width) / 2;
-    int y = (d.height - getSize().height) / 2;
-    setLocation(x, y);
-    setTitle("LoginGUI");
-    setResizable(false);
-    Container cp = getContentPane();
+    int x = (d.width - Login.getSize().width) / 2;
+    int y = (d.height - Login.getSize().height) / 2;
+    Login.setLocation(x, y);
+    Login.setTitle("LoginGUI");
+    Login.setResizable(false);
+    Container cp = Login.getContentPane();
     cp.setLayout(null);
     // Anfang Komponenten
     
@@ -102,13 +106,13 @@ public class LoginGUI extends JFrame {
     });
     bHierklicken.setBackground(new Color(0xFFC800));
     cp.add(bHierklicken);
-    setUndecorated(false);
+    Login.setUndecorated(false);
     cp.setBackground(new Color(0xEEEEEE));
     jPasswordField1.setBounds(184, 312, 209, 33);
     cp.add(jPasswordField1);
     // Ende Komponenten
     
-    setVisible(true);
+    Login.setVisible(true);
     
 
     
@@ -133,13 +137,23 @@ public class LoginGUI extends JFrame {
   
   public void bLogin_ActionPerformed(ActionEvent evt){
 
-	  	//LOGIN Button Pressed
-    
+	  boolean Darf = LoginGUI.DarfLogin();
+	  if(Darf) {
+		  
+		  System.out.println("DU DARFST!  EHRENMANN");
+		  Login.dispose();
+	  }
+	  
+	  
+	  
+	  
+	  	
   } 
 
   public void bHierklicken_ActionPerformed(ActionEvent evt) {
-	  RegistrierungsGUI RegistrierungsFenster = new RegistrierungsGUI();
-     
+	  
+	  RegistrierungsGUI Registrierung = new RegistrierungsGUI();
+	  Login.dispose();
     
   } 
   

@@ -9,6 +9,10 @@ public class Main{
 		   
 		   
 		   LoginGUI logo = new LoginGUI();
+		   
+		   
+		   
+		   
 		   // Sachen relevant zum Warenkorb #nostatic 
 			/*
 			 * WarenkorbGUI waren1 = new WarenkorbGUI(); Ware w1 = new Ware("Henning",0);
