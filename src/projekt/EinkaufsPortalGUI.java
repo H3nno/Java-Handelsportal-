@@ -193,7 +193,8 @@ public class EinkaufsPortalGUI{
     
   }
   public void Benutzerverwaltung_ActionPerformed(ActionEvent evt) {
-	  System.out.println("Benutzerverwaltung");
+	  EinkaufsPortal.dispose();
+	  new BenutzerverwaltungGUI();
     
   }
 } // end of class Einkaufsportal

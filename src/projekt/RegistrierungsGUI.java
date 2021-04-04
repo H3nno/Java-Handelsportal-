@@ -181,6 +181,8 @@ public void bJetztregistrierenundzurueckzumLogin_ActionPerformed(ActionEvent evt
 					writer.append("" +RegistrierungsGUI.jTFUsername.getText());
 					writer.append(";");
 					writer.append("" +RegistrierungsGUI.jPFPasswort1.getText());
+					writer.append(";");
+					writer.append("0");
 
 					new LoginGUI();
 					Registrierung.dispose();
@@ -212,7 +214,7 @@ public void bJetztregistrierenundzurueckzumLogin_ActionPerformed(ActionEvent evt
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public static boolean CheckUsername() {
 		String Username = RegistrierungsGUI.jTFUsername.getText();
-		RegistrierungsGUI.readCSV();
+		String[][] Speichern = LoginGUI.readCSV();
 		for (int i = 1; i < WieTief; i++) {
 			if (Username.equals(Speichern[i][2])) {return false;}
 			}
@@ -220,30 +222,16 @@ public void bJetztregistrierenundzurueckzumLogin_ActionPerformed(ActionEvent evt
 		return true;
 	}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public static void readCSV() {
-		String Pfad = "src\\projekt\\Benutzerdaten.csv";
-		String line;
-		BufferedReader BR1 = null;
-		BufferedReader BR = null;
-		try {
-			BR1 = new BufferedReader(new FileReader(Pfad));
-			int z = 0;
-			while ((line = BR1.readLine()) != null) {
-				WieTief++;
-			}
-			Speichern = new String[WieTief][4];
-			BR = new BufferedReader(new FileReader(Pfad));
-			while ((line = BR.readLine()) != null) {
-				String[] Spalten = line.split(";");
-				for (int j = 0; j < 4; j++) {
-					Speichern[z][j] = Spalten[j];
-				}
-				z++;
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+	/*
+	 * public static void readCSV() { String Pfad =
+	 * "src\\projekt\\Benutzerdaten.csv"; String line; BufferedReader BR1 = null;
+	 * BufferedReader BR = null; try { BR1 = new BufferedReader(new
+	 * FileReader(Pfad)); int z = 0; while ((line = BR1.readLine()) != null) {
+	 * WieTief++; } Speichern = new String[WieTief][4]; BR = new BufferedReader(new
+	 * FileReader(Pfad)); while ((line = BR.readLine()) != null) { String[] Spalten
+	 * = line.split(";"); for (int j = 0; j < 4; j++) { Speichern[z][j] =
+	 * Spalten[j]; } z++; } } catch (IOException e) { e.printStackTrace(); } }
+	 */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   
   
