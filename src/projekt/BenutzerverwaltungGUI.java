@@ -203,11 +203,11 @@ public class BenutzerverwaltungGUI {
 		String[][] csv = LoginGUI.readCSV();
 		int x = 0;
 
-		while (!csv[2][x].equals(Username)) {
+		while (!csv[x][2].equals(Username)) {
 			x++;
 
 		}
-		if (csv[2][x].equals(Username)) {
+		if (csv[x][2].equals(Username)) {
 
 			jUsername.setText(csv[x][2]);
 			jVorname.setText(csv[x][0]);
