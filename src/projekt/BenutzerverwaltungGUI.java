@@ -177,7 +177,8 @@ public class BenutzerverwaltungGUI {
 	// Anfang Methoden
 
 	public void bPasswortaendern_ActionPerformed(ActionEvent evt) {
-
+		new PasswortAendern();
+		BenutzerverwaltungGUI.dispose();
 	}
 
 	public void bGuthabenhinzufuegen_ActionPerformed(ActionEvent evt) {
