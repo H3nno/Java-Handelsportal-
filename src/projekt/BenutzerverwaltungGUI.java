@@ -3,7 +3,6 @@ package projekt;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.*;
 
 public class BenutzerverwaltungGUI {
 	// Anfang Attribute
@@ -200,20 +199,18 @@ public class BenutzerverwaltungGUI {
 	public void DatenEintragen() {
 
 		String Username = LoginGUI.NAME;
-		String[][] csv = LoginGUI.readCSV();
-		int x = 0;
+		int Stelle = InteractBenutzerdaten.StelleArray(Username);
+		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
 
-		while (!csv[x][2].equals(Username)) {
-			x++;
+		if (Stelle != -1) {
 
-		}
-		if (csv[x][2].equals(Username)) {
+			jUsername.setText(Liste[Stelle].getUsername());
+			jVorname.setText(Liste[Stelle].getVorname());
+			jNachname.setText(Liste[Stelle].getNachname());
+			jPasswort.setText("**********"); // richtiges Passwort liegt bei csv[x][3] aber soll ja nicht als Klartext
+												// dargestellt werden
+			jGuthaben.setText(Liste[Stelle].getGuthaben() + " €");
 
-			jUsername.setText(csv[x][2]);
-			jVorname.setText(csv[x][0]);
-			jNachname.setText(csv[x][1]);
-			jPasswort.setText("**********"); // richtiges Passwort liegt bei csv[x][3] aber soll ja nicht als Klartext dargestellt werden
-			jGuthaben.setText(csv[x][4] + " €");
 		}
 
 	}

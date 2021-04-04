@@ -3,7 +3,6 @@ package projekt;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.*;
 
 public class PasswortAendern {
 	// Anfang Attribute
@@ -114,49 +113,46 @@ public class PasswortAendern {
 	}
 
 	@SuppressWarnings("deprecation")
-	public void bPasswortaendern_ActionPerformed(ActionEvent evt){
-
-		String[][] Speicher = LoginGUI.readCSV();
+	public void bPasswortaendern_ActionPerformed(ActionEvent evt) {
 
 		String Username = LoginGUI.NAME;
-		String[][] csv = LoginGUI.readCSV();
-		int x = 0;
-		String Passwort = null;
+		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
 
-		while (!csv[x][2].equals(Username)) {
-			x++;
-		}
-		if (csv[x][2].equals(Username)) {
-			Passwort = csv[x][3];
+		int UserID = InteractBenutzerdaten.StelleArray(Username);
 
-		}
+		
 
-		if (jPasswordAlt.getText().equals(Passwort)) {
+		if (UserID != -1) {
+			if (jPasswordAlt.getText().equals(Liste[UserID].getPasswort())) {
 
-			if (RegistrierungsGUI.CheckPasswords(jPasswordNeu1.getText(), jPasswordNeu2.getText())) {
+				if (RegistrierungsGUI.CheckPasswords(jPasswordNeu1.getText(), jPasswordNeu2.getText())) {
 
-				jStatus.setText("Passwort erfolgreich geändert!"); //Text wird nicht angezeigt weil das Programm zu schnell anfängt zu schlafen
-			
-				csv[x][3] = jPasswordNeu1.getText();
-				
-				
-				schlafen();
-				ChangePass.dispose();
-				new BenutzerverwaltungGUI();
+					jStatus.setText("Passwort erfolgreich geändert!"); // Text wird nicht angezeigt weil das Programm zu
+																		// schnell anfängt zu schlafen
+					Liste[UserID].setPasswort(jPasswordNeu1.getText());
+					InteractBenutzerdaten.writeCSV(Liste);
+
+					schlafen();
+					ChangePass.dispose();
+					new BenutzerverwaltungGUI();
+
+				}
+
+				else {
+					jStatus.setText("Neue Passwörter stimmen nicht überein");
+
+				}
+
+			} else {
+				jStatus.setText("Altes Passwort falsch");
 
 			}
-
-			else {
-				jStatus.setText("Neue Passwörter stimmen nicht überein");
-
-			}
-
 		} else {
-			jStatus.setText("Altes Passwort falsch");
-
+			jStatus.setText("Gravierender Fehler, Admin kontaktieren");
 		}
 
 	}
+
 	public void schlafen() {
 		try {
 			Thread.sleep(1500);
@@ -164,7 +160,7 @@ public class PasswortAendern {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 }

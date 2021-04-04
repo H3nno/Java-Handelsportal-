@@ -113,4 +113,19 @@ public class InteractBenutzerdaten {
 
 	}
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	public static int StelleArray(String Username) {
+
+		Benutzer[] Liste = readCSV();
+		int UserID = -1;
+
+		for (int i = 0; i < Liste.length; i++) {
+			if (Username.equals(Liste[i].getUsername())) {
+				UserID = i;
+			}
+		}
+
+		return UserID;
+
+	}
 }

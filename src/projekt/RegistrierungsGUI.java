@@ -2,9 +2,6 @@ package projekt;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.io.FileWriter;
-import java.io.IOException;
-
 import javax.swing.*;
 
 public class RegistrierungsGUI {
@@ -166,7 +163,7 @@ public class RegistrierungsGUI {
 				ListeNEU[i] = temp;
 
 				InteractBenutzerdaten.writeCSV(ListeNEU);
-				
+
 				Registrierung.dispose();
 				new LoginGUI();
 			} else {
@@ -190,16 +187,16 @@ public class RegistrierungsGUI {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public static boolean CheckUsername() {
 		String Username = RegistrierungsGUI.jTFUsername.getText();
-		String[][] Speichern = LoginGUI.readCSV();
-		for (int i = 1; i < WieTief; i++) {
-			if (Username.equals(Speichern[i][2])) {
-				return false;
-			}
+
+		int Stelle = InteractBenutzerdaten.StelleArray(Username);
+
+		if (Stelle == -1) {
+			return true;
+
 		}
-		if (Username.equals("")) {
-			return false;
-		}
-		return true;
+
+		return false;
+
 	}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
