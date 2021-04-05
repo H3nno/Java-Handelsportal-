@@ -27,7 +27,7 @@ public class EinkaufsPortalGUI {
 	private JButton Benutzerverwaltung = new JButton();
 	private JButton Abmelden = new JButton();
 	private JLabel lblNewLabel = new JLabel("Artikel im Warenkorb : " + WarenkorbGUI.warenlist.size());
-	private JLabel lblNewLabel_1 = new JLabel("Guthaben :");
+	private JLabel lblNewLabel_1 = new JLabel("Guthaben : ");
 
 	private JTextArea jTextArea1 = new JTextArea("");
 	private JScrollPane jTextArea1ScrollPane = new JScrollPane(jTextArea1);
@@ -148,7 +148,7 @@ public class EinkaufsPortalGUI {
 		cp.add(lblNewLabel_1);
 
 		// Ende Komponenten
-
+		Datenladen();
 		EinkaufsPortal.setVisible(true);
 	} // end of public Einkaufsportal
 
@@ -178,6 +178,16 @@ public class EinkaufsPortalGUI {
 			}
 		}
 
+	}
+	public void Datenladen() {
+		String Username = LoginGUI.NAME;
+		int Stelle = InteractBenutzerdaten.StelleArray(Username);
+		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
+
+		if (Stelle != -1) {
+
+			lblNewLabel_1.setText("Guthaben : "+ Liste[Stelle].getGuthaben());
+		}
 	}
 
 	public void Abmelden_ActionPerformed(ActionEvent evt) {

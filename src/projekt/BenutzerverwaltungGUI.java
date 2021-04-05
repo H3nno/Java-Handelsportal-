@@ -181,7 +181,7 @@ public class BenutzerverwaltungGUI {
 	}
 
 	public void bGuthabenhinzufuegen_ActionPerformed(ActionEvent evt) {
-
+		new GuthabenhinzufuegenGUI();
 	}
 
 	public void bZurueck_ActionPerformed(ActionEvent evt) {

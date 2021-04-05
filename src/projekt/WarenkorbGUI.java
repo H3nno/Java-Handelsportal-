@@ -115,7 +115,7 @@ public class WarenkorbGUI {
 		lblBilanz.setBounds(24, 636, 206, 37);
 		Warenkorb.getContentPane().add(lblBilanz);
 
-		lPreiseintragen_1.setText("0\u20AC");
+		lPreiseintragen_1.setText("0€");
 		lPreiseintragen_1.setOpaque(true);
 		lPreiseintragen_1.setHorizontalTextPosition(SwingConstants.CENTER);
 		lPreiseintragen_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -124,8 +124,29 @@ public class WarenkorbGUI {
 		lPreiseintragen_1.setBounds(251, 637, 239, 36);
 		Warenkorb.getContentPane().add(lPreiseintragen_1);
 		// Ende Komponenten
-
+		Datenladen();
 		Warenkorb.setVisible(true);
+	}
+	public void Datenladen() {
+		String Username = LoginGUI.NAME;
+		int Stelle = InteractBenutzerdaten.StelleArray(Username);
+		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
+		int bilanz = preisEintragen;
+		int aktguthaben;
+		try {
+			   aktguthaben = Integer.parseInt(Liste[Stelle].getGuthaben());
+			   bilanz = aktguthaben - bilanz ;
+			}
+			catch (NumberFormatException e)
+			{
+				System.out.println(e);
+			}
+
+		if (Stelle != -1) {
+			//preisEintragen
+			lPreiseintragen_1.setText(bilanz + "€");
+		}
+		lPreiseintragen.setText(Integer.toString(preisEintragen) + "€");
 	}
 
 	public JFrame getWarenkorb() {
@@ -142,7 +163,14 @@ public class WarenkorbGUI {
 		int[] rows = jTable1.getSelectedRows();
 		for (int i = 0; i < rows.length; i++) {
 			model.removeRow(rows[i] - i);
+			preisEintragen = preisEintragen - warenlist.get(i).getPreis();
 			warenlist.remove(i);
+			
+			}
+		Datenladen();
 		}
+		
+		
+		
+		
 	}
-}
