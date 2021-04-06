@@ -182,6 +182,7 @@ public class BenutzerverwaltungGUI {
 
 	public void bGuthabenhinzufuegen_ActionPerformed(ActionEvent evt) {
 		new GuthabenhinzufuegenGUI();
+		BenutzerverwaltungGUI.dispose();
 	}
 
 	public void bZurueck_ActionPerformed(ActionEvent evt) {
