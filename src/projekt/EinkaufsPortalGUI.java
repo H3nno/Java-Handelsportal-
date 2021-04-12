@@ -18,7 +18,7 @@ public class EinkaufsPortalGUI {
 	// Anfang Attribute
 	private ArrayList<Ware> list = new ArrayList<>();
 	private JLabel lEinkaufsportal = new JLabel();
-	private DefaultListModel jList1Model = new DefaultListModel();
+	// private DefaultListModel jList1Model = new DefaultListModel();
 	private JButton bWarenkorbhinzufuegen = new JButton();
 	private JButton bZumWarenkorb = new JButton();
 	private JButton admin = new JButton();
@@ -28,6 +28,9 @@ public class EinkaufsPortalGUI {
 	private JButton Abmelden = new JButton();
 	private JLabel lblNewLabel = new JLabel("Artikel im Warenkorb : " + WarenkorbGUI.warenlist.size());
 	private JLabel lblNewLabel_1 = new JLabel("Guthaben : ");
+
+	private JTextField jNAME = new JTextField();
+	private JTextField jPREIS = new JTextField();
 
 	private JTextArea jTextArea1 = new JTextArea("");
 	private JScrollPane jTextArea1ScrollPane = new JScrollPane(jTextArea1);
@@ -63,10 +66,13 @@ public class EinkaufsPortalGUI {
 			@Override
 			public void valueChanged(ListSelectionEvent arg0) {
 				temp = list_1.getSelectedValue();
-				jTextArea1.setText(temp.getBeschreibung() + '\n' + '\n' + "Preis : " + temp.getPreis() + "€");
+				jTextArea1.setText(temp.getBeschreibung());
+				jNAME.setText(temp.getName());
+				jPREIS.setText(temp.getPreis() + " €");
 			}
 		});
 		jTextArea1.setEditable(false);
+
 		list_1.setModel(Modell);
 		list_1.setBounds(24, 148, 338, 324);
 		EinkaufsPortal.getContentPane().add(list_1);
@@ -141,8 +147,20 @@ public class EinkaufsPortalGUI {
 		bZumWarenkorb.setBackground(new Color(0xFFC800));
 		bZumWarenkorb.setFont(new Font("Dialog", Font.BOLD, 16));
 		cp.add(bZumWarenkorb);
-		jTextArea1ScrollPane.setBounds(378, 148, 416, 324);
+
+		jNAME.setFont(new Font("Dialog", Font.BOLD, 16));
+		jPREIS.setFont(new Font("Dialog", Font.BOLD, 16));
+		jNAME.setBounds(378, 148, 208, 48);
+		jPREIS.setBounds(588, 148, 208, 48);
+		jPREIS.setEditable(false);
+		jNAME.setEditable(false);
+
+		cp.add(jPREIS);
+		cp.add(jNAME);
+
+		jTextArea1ScrollPane.setBounds(378, 208, 416, 264);
 		cp.add(jTextArea1ScrollPane);
+
 		lblNewLabel.setBounds(700, 530, 155, 13);
 		cp.add(lblNewLabel);
 		lblNewLabel_1.setBounds(700, 34, 150, 13);
@@ -181,6 +199,7 @@ public class EinkaufsPortalGUI {
 		}
 
 	}
+
 	public void Datenladen() {
 		String Username = LoginGUI.NAME;
 		int Stelle = InteractBenutzerdaten.StelleArray(Username);
@@ -188,7 +207,7 @@ public class EinkaufsPortalGUI {
 
 		if (Stelle != -1) {
 
-			lblNewLabel_1.setText("Guthaben : "+ Liste[Stelle].getGuthaben());
+			lblNewLabel_1.setText("Guthaben : " + Liste[Stelle].getGuthaben());
 		}
 	}
 
