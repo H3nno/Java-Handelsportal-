@@ -1,5 +1,7 @@
 package projekt;
 
+import java.util.*;
+import java.util.List;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -15,6 +17,8 @@ import javax.swing.event.*;
 
 public class VerwaltungGUI {
 	// Anfang Attribute
+	private Ware[] wareAtemp;
+	private Ware temp;
 	private JLabel lEinkaufsportal = new JLabel();
 	private JButton bHinzufuegen = new JButton();
 	private JButton bZurueck = new JButton();
@@ -32,12 +36,14 @@ public class VerwaltungGUI {
 	private JButton bEntfernen = new JButton();
 	private JButton bSpeichern = new JButton();
 	private JButton bAbbrechen = new JButton();
+	public int status = 0;
 
 	JFrame VerwaltungGUI = new JFrame();
 	// Ende Attribute
 
 	public VerwaltungGUI() {
 		// Frame-Initialisierung
+		addWaren();
 		VerwaltungGUI.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		int frameWidth = 1011;
 		int frameHeight = 730;
@@ -87,6 +93,16 @@ public class VerwaltungGUI {
 		jTextArea1.setEditable(false);
 		cp.add(jTextArea1ScrollPane);
 		jList1.setModel(jList1Model);
+		jList1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+
+			@Override
+			public void valueChanged(ListSelectionEvent arg0) {
+				temp = jList1.getSelectedValue();
+				jTextArea1.setText(temp.getBeschreibung());
+				jName.setText(temp.getName());
+				jTpreis.setText(temp.getPreis() + " €");
+			}
+		});
 		jBeschreibung.setBounds(57, 164, 302, 324);
 		cp.add(jBeschreibung);
 		jName.setBounds(390, 188, 206, 52);
@@ -141,6 +157,7 @@ public class VerwaltungGUI {
 			}
 		});
 		cp.add(bAbbrechen);
+
 		// Ende Komponenten
 
 		VerwaltungGUI.setVisible(true);
@@ -149,6 +166,7 @@ public class VerwaltungGUI {
 	// Anfang Methoden
 
 	public void bHinzufuegen_ActionPerformed(ActionEvent evt) {
+		status = 1;
 		jName.setBackground(new Color(77, 255, 77));
 		jTpreis.setBackground(new Color(77, 255, 77));
 		jTextArea1.setBackground(new Color(77, 255, 77));
@@ -156,11 +174,13 @@ public class VerwaltungGUI {
 	} // end of bHinzufuegen_ActionPerformed
 
 	public void bZurueck_ActionPerformed(ActionEvent evt) {
-		// TODO hier Quelltext einfügen
+		VerwaltungGUI.dispose();
+		new EinkaufsPortalGUI();
 
 	} // end of bZurueck_ActionPerformed
 
 	public void bBearbeiten_ActionPerformed(ActionEvent evt) {
+		status = 2;
 		jName.setBackground(new Color(153, 255, 238));
 		jTpreis.setBackground(new Color(153, 255, 238));
 		jTextArea1.setBackground(new Color(153, 255, 238));
@@ -168,6 +188,7 @@ public class VerwaltungGUI {
 	} // end of bBearbeiten_ActionPerformed
 
 	public void bEntfernen_ActionPerformed(ActionEvent evt) {
+		status = 3;
 		jName.setBackground(new Color(255, 66, 66));
 		jTpreis.setBackground(new Color(255, 66, 66));
 		jTextArea1.setBackground(new Color(255, 66, 66));
@@ -175,14 +196,40 @@ public class VerwaltungGUI {
 	} // end of bEntfernen_ActionPerformed
 
 	public void bSpeichern_ActionPerformed(ActionEvent evt) {
-		// TODO hier Quelltext einfügen
+
+		status = 0;
 
 	} // end of bSpeichern_ActionPerformed
 
 	public void bAbbrechen_ActionPerformed(ActionEvent evt) {
 		// TODO hier Quelltext einfügen
 
-	} // end of bAbbrechen_ActionPerformed
+	}
 
-	// Ende Methoden
+	public void btnNewButton_ActionPerformed(ActionEvent evt) {
+
+	}
+
+	public void addWaren() {
+		Ware[] WarenListe = InteractWarenListe.readCSV();
+		for (int i = 1; i < WarenListe.length; i++) {
+			jList1Model.addElement(WarenListe[i]);
+		}
+	}
+
+	public Ware[] statusAbfrage(int status) {
+		Ware[] WarenListe = InteractWarenListe.readCSV();
+		switch(status) {
+			case 0:
+				break;
+			case 1:
+				
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+		}
+		return WarenListe;
+	}
 } // end of class Einkaufsporta
