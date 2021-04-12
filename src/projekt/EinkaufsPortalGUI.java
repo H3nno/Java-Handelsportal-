@@ -2,7 +2,6 @@ package projekt;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.event.*;
 
@@ -15,10 +14,7 @@ import javax.swing.event.*;
  */
 
 public class EinkaufsPortalGUI {
-	// Anfang Attribute
-	private ArrayList<Ware> list = new ArrayList<>();
 	private JLabel lEinkaufsportal = new JLabel();
-	private DefaultListModel jList1Model = new DefaultListModel();
 	private JButton bWarenkorbhinzufuegen = new JButton();
 	private JButton bZumWarenkorb = new JButton();
 	private JButton admin = new JButton();
@@ -34,7 +30,7 @@ public class EinkaufsPortalGUI {
 
 	private JTextArea jTextArea1 = new JTextArea("");
 	private JScrollPane jTextArea1ScrollPane = new JScrollPane(jTextArea1);
-	private JList<Ware> list_1 = new JList();
+	private JList<Ware> list_1 = new JList<Ware>();
 	// Ende Attribute
 	DefaultListModel<Ware> Modell = new DefaultListModel<>();
 	JFrame EinkaufsPortal = new JFrame();
