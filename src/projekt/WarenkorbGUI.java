@@ -127,6 +127,7 @@ public class WarenkorbGUI {
 		Datenladen();
 		Warenkorb.setVisible(true);
 	}
+
 	public void Datenladen() {
 		String Username = LoginGUI.NAME;
 		int Stelle = InteractBenutzerdaten.StelleArray(Username);
@@ -134,16 +135,14 @@ public class WarenkorbGUI {
 		int bilanz = preisEintragen;
 		int aktguthaben;
 		try {
-			   aktguthaben = Integer.parseInt(Liste[Stelle].getGuthaben());
-			   bilanz = aktguthaben - bilanz ;
-			}
-			catch (NumberFormatException e)
-			{
-				System.out.println(e);
-			}
+			aktguthaben = Integer.parseInt(Liste[Stelle].getGuthaben());
+			bilanz = aktguthaben - bilanz;
+		} catch (NumberFormatException e) {
+			System.out.println(e);
+		}
 
 		if (Stelle != -1) {
-			//preisEintragen
+			// preisEintragen
 			lPreiseintragen_1.setText(bilanz + "€");
 		}
 		lPreiseintragen.setText(Integer.toString(preisEintragen) + "€");
@@ -165,12 +164,9 @@ public class WarenkorbGUI {
 			model.removeRow(rows[i] - i);
 			preisEintragen = preisEintragen - warenlist.get(i).getPreis();
 			warenlist.remove(i);
-			
-			}
-		Datenladen();
+
 		}
-		
-		
-		
-		
+		Datenladen();
 	}
+
+}
