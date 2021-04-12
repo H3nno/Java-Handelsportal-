@@ -18,7 +18,7 @@ public class EinkaufsPortalGUI {
 	// Anfang Attribute
 	private ArrayList<Ware> list = new ArrayList<>();
 	private JLabel lEinkaufsportal = new JLabel();
-	// private DefaultListModel jList1Model = new DefaultListModel();
+	private DefaultListModel jList1Model = new DefaultListModel();
 	private JButton bWarenkorbhinzufuegen = new JButton();
 	private JButton bZumWarenkorb = new JButton();
 	private JButton admin = new JButton();
@@ -41,10 +41,7 @@ public class EinkaufsPortalGUI {
 
 	public EinkaufsPortalGUI() {
 		// Waren erschaffen
-		Modell.addElement(new Ware("Henning", 0, "leichte Erstinstallation"));
-		Modell.addElement(new Ware("Jermy", 10, "schon Vorkonfiguriert"));
-		Modell.addElement(new Ware("Kevin", 20, "schwer zu bedienen"));
-		Modell.addElement(new Ware("Marcelo", 30, "Marcelooooo"));
+		addWaren();
 		// Frame-Initialisierung
 		EinkaufsPortal.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		int frameWidth = 891;
@@ -222,4 +219,14 @@ public class EinkaufsPortalGUI {
 		new BenutzerverwaltungGUI();
 
 	}
+	
+	public void addWaren() {
+		Ware[] WarenListe = InteractWarenListe.readCSV();
+		
+		for(int i = 1; i < WarenListe.length;i++) {
+			Modell.addElement(WarenListe[i]);
+		}
+		
+	}
+	
 } // end of class Einkaufsportal

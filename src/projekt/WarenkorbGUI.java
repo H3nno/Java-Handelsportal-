@@ -80,7 +80,7 @@ public class WarenkorbGUI {
 			Vector row = new Vector();
 			row.add(ware.getName());
 			row.add(ware.getPreis());
-			preisEintragen = preisEintragen + ware.getPreis();
+			preisEintragen = preisEintragen + Integer.parseInt(ware.getPreis());/////////////////////////////
 			lPreiseintragen.setText(Integer.toString(preisEintragen) + "€");
 			model.addRow(row);
 		}
@@ -162,7 +162,7 @@ public class WarenkorbGUI {
 		int[] rows = jTable1.getSelectedRows();
 		for (int i = 0; i < rows.length; i++) {
 			model.removeRow(rows[i] - i);
-			preisEintragen = preisEintragen - warenlist.get(i).getPreis();
+			preisEintragen = preisEintragen - Integer.parseInt(warenlist.get(i).getPreis()); /////////////////////////////////////////
 			warenlist.remove(i);
 
 		}

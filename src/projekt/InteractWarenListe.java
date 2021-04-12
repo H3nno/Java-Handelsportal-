@@ -28,7 +28,7 @@ public class InteractWarenListe {
 			BR = new BufferedReader(new FileReader(Pfad));
 			while ((line = BR.readLine()) != null) {
 				String[] Spalten = line.split(";");
-				for (int j = 0; j < 5; j++) {
+				for (int j = 0; j < 3; j++) {
 					Speichern[z][j] = Spalten[j];
 				}
 				z++;
@@ -49,12 +49,15 @@ public class InteractWarenListe {
 		for (int i = 0; i < WieTief; i++) {
 
 			String tempName = Speichern[i][0];
-			int tempPreis = Integer.parseInt(Speichern[i][1]);
+			String tempPreis = Speichern[i][1];
 			String tempBeschreibung = Speichern[i][2];
+			
+			//int tempPreisInt = Integer.parseInt(tempPreisString);
 
 			Ware temp = new Ware(tempName, tempPreis, tempBeschreibung);
 
 			Warenliste[i] = temp;
+			System.out.println(Warenliste[i].getName());
 		}
 		WieTief = 0;
 		return Warenliste;

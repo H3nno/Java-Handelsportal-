@@ -2,12 +2,12 @@ package projekt;
 
 public class Ware {
 	private String Name;
-	private int Preis;
+	private String Preis;
 	private String Beschreibung;
 	// Konstruktor 
-	public Ware(String _Name, int _Preis,String _Beschreibung) {
+	public Ware(String _Name, String tempPreis,String _Beschreibung) {
 		Name = _Name;
-		Preis = _Preis;
+		Preis = tempPreis;
 		Beschreibung = _Beschreibung;
 		
 	}
@@ -24,10 +24,10 @@ public class Ware {
 	public void setName(String name) {
 		Name = name;
 	}
-	public int getPreis() {
+	public String getPreis() {
 		return Preis;
 	}
-	public void setPreis(int preis) {
+	public void setPreis(String preis) {
 		Preis = preis;
 	}
 	@Override
