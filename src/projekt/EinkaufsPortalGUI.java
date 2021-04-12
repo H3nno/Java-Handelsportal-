@@ -66,6 +66,7 @@ public class EinkaufsPortalGUI {
 				jTextArea1.setText(temp.getBeschreibung() + '\n' + '\n' + "Preis : " + temp.getPreis() + "€");
 			}
 		});
+		jTextArea1.setEditable(false);
 		list_1.setModel(Modell);
 		list_1.setBounds(24, 148, 338, 324);
 		EinkaufsPortal.getContentPane().add(list_1);
