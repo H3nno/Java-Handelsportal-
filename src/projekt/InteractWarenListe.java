@@ -51,13 +51,12 @@ public class InteractWarenListe {
 			String tempName = Speichern[i][0];
 			String tempPreis = Speichern[i][1];
 			String tempBeschreibung = Speichern[i][2];
-			
-			//int tempPreisInt = Integer.parseInt(tempPreisString);
+
+			// int tempPreisInt = Integer.parseInt(tempPreisString);
 
 			Ware temp = new Ware(tempName, tempPreis, tempBeschreibung);
 
 			Warenliste[i] = temp;
-			System.out.println(Warenliste[i].getName());
 		}
 		WieTief = 0;
 		return Warenliste;
