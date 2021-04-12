@@ -3,7 +3,6 @@ package projekt;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.*;
 
 /**
  *
@@ -20,7 +19,7 @@ public class VerwaltungGUI {
 	private JButton bZurueck = new JButton();
 	private JTextArea jTextArea1 = new JTextArea("");
 	private JScrollPane jTextArea1ScrollPane = new JScrollPane(jTextArea1);
-	private JList<Ware> jList1 = new JList();
+	private JList<Ware> jList1 = new JList<Ware>();
 	private DefaultListModel<Ware> jList1Model = new DefaultListModel<>();
 	private JScrollPane jBeschreibung = new JScrollPane(jList1);
 	private JTextField jName = new JTextField();

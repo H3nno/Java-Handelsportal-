@@ -101,7 +101,7 @@ public class WarenkorbGUI {
 		jTable1.setDefaultEditor(Object.class, null);
 
 		for (Ware ware : warenlist) {
-			Vector row = new Vector();
+			Vector<String> row = new Vector<String>();
 			row.add(ware.getName());
 			row.add(ware.getPreis());
 			preisEintragen = preisEintragen + Integer.parseInt(ware.getPreis());/////////////////////////////
