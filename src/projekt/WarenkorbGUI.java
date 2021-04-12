@@ -22,14 +22,16 @@ public class WarenkorbGUI {
 	private JButton bEinkaufabschliessen_1 = new JButton();
 	private DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 	private int preisEintragen = 0;
-
+	private JButton bZurueck = new JButton();
+	private JLabel lAktuellGuthaben = new JLabel();
+	
 	JFrame Warenkorb = new JFrame();
 	// Ende Attribute
 
 	public WarenkorbGUI() {
 		Warenkorb.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		int frameWidth = 536;
-		int frameHeight = 796;
+		int frameWidth = 596;
+		int frameHeight = 856;
 		Warenkorb.setSize(frameWidth, frameHeight);
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 		int x = (d.width - Warenkorb.getSize().width) / 2;
@@ -41,7 +43,16 @@ public class WarenkorbGUI {
 		cp.setLayout(null);
 
 		// Anfang Komponenten
-		lGesamtPreis.setBounds(24, 591, 206, 37);
+		lAktuellGuthaben.setBounds(24, 607, 206, 37);
+		lAktuellGuthaben.setText("Aktueller Guthaben");
+		lAktuellGuthaben.setHorizontalAlignment(SwingConstants.CENTER);
+		lAktuellGuthaben.setHorizontalTextPosition(SwingConstants.CENTER);
+		lAktuellGuthaben.setBackground(Color.CYAN);
+		lAktuellGuthaben.setOpaque(true);
+		lAktuellGuthaben.setFont(new Font("Dialog", Font.BOLD, 20));
+		cp.add(lAktuellGuthaben);
+		
+		lGesamtPreis.setBounds(24, 647, 206, 37);
 		lGesamtPreis.setText("Gesamt Preis");
 		lGesamtPreis.setHorizontalAlignment(SwingConstants.CENTER);
 		lGesamtPreis.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -49,7 +60,7 @@ public class WarenkorbGUI {
 		lGesamtPreis.setOpaque(true);
 		lGesamtPreis.setFont(new Font("Dialog", Font.BOLD, 20));
 		cp.add(lGesamtPreis);
-		bEinkaufabschliessen.setBounds(24, 683, 461, 58);
+		bEinkaufabschliessen.setBounds(24, 743, 461, 58);
 		bEinkaufabschliessen.setText("Einkaufabschlieﬂen");
 		bEinkaufabschliessen.setMargin(new Insets(2, 2, 2, 2));
 		bEinkaufabschliessen.addActionListener(new ActionListener() {
@@ -60,7 +71,20 @@ public class WarenkorbGUI {
 		bEinkaufabschliessen.setBackground(new Color(0xFFC800));
 		bEinkaufabschliessen.setFont(new Font("Dialog", Font.BOLD, 22));
 		cp.add(bEinkaufabschliessen);
-		lPreiseintragen.setBounds(251, 592, 239, 36);
+		
+		bZurueck.setBounds(24, 24, 90, 35);
+		bZurueck.setText("Zurueck");
+		bZurueck.setMargin(new Insets(2, 2, 2, 2));
+		bZurueck.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				bZurueck_ActionPerformed(evt);
+			}
+		});
+		bZurueck.setBackground(new Color(0xFFC800));
+		bZurueck.setFont(new Font("Dialog", Font.BOLD, 18));
+		cp.add(bZurueck);
+		
+		lPreiseintragen.setBounds(251, 647, 239, 36);
 		lPreiseintragen.setText(Integer.toString(preisEintragen) + "Ä");
 		lPreiseintragen.setFont(new Font("Dialog", Font.BOLD, 22));
 		lPreiseintragen.setBackground(Color.CYAN);
@@ -112,7 +136,7 @@ public class WarenkorbGUI {
 		lblBilanz.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBilanz.setFont(new Font("Dialog", Font.BOLD, 20));
 		lblBilanz.setBackground(Color.CYAN);
-		lblBilanz.setBounds(24, 636, 206, 37);
+		lblBilanz.setBounds(24, 686, 206, 37);
 		Warenkorb.getContentPane().add(lblBilanz);
 
 		lPreiseintragen_1.setText("0Ä");
@@ -121,7 +145,7 @@ public class WarenkorbGUI {
 		lPreiseintragen_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lPreiseintragen_1.setFont(new Font("Dialog", Font.BOLD, 22));
 		lPreiseintragen_1.setBackground(Color.CYAN);
-		lPreiseintragen_1.setBounds(251, 637, 239, 36);
+		lPreiseintragen_1.setBounds(251, 686, 239, 36);
 		Warenkorb.getContentPane().add(lPreiseintragen_1);
 		// Ende Komponenten
 		Datenladen();
@@ -167,6 +191,12 @@ public class WarenkorbGUI {
 
 		}
 		Datenladen();
+	}
+	
+	public void bZurueck_ActionPerformed(ActionEvent evt) {
+		Warenkorb.dispose();
+		new EinkaufsPortalGUI();
+
 	}
 
 }
