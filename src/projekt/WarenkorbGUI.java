@@ -210,11 +210,17 @@ public class WarenkorbGUI {
 
 	public void bEinkaufabschliessen_1_ActionPerformed(ActionEvent evt) {
 		int[] rows = jTable1.getSelectedRows();
-		for (int i = 0; i < rows.length; i++) {
+		/*for (int i = 0; i < rows.length; i++) {
 			model.removeRow(rows[i] - i);
 			preisEintragen = preisEintragen - Integer.parseInt(warenlist.get(i).getPreis()); /////////////////////////////////////////
 			warenlist.remove(i);
+		}*/
+		for (int i = rows.length - 1; i >= 0; i--) {
+			model.removeRow(rows[i]);
+			preisEintragen = preisEintragen - Integer.parseInt(warenlist.get(i).getPreis()); /////////////////////////////////////////
+			warenlist.remove(i);
 		}
+		
 		Datenladen();
 	}
 	
