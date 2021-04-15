@@ -22,14 +22,18 @@ public class WarenkorbGUI {
 	private JButton bEinkaufabschliessen_1 = new JButton();
 	private DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 	private int preisEintragen = 0;
-
+	private JButton bZurueck = new JButton();
+	private JLabel lAktuell = new JLabel();
+	private JLabel lGuthabenAktuell = new JLabel();
+	private int guthabenAktl = 0;
+	
 	JFrame Warenkorb = new JFrame();
 	// Ende Attribute
 
 	public WarenkorbGUI() {
 		Warenkorb.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		int frameWidth = 536;
-		int frameHeight = 796;
+		int frameWidth = 596;
+		int frameHeight = 856;
 		Warenkorb.setSize(frameWidth, frameHeight);
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 		int x = (d.width - Warenkorb.getSize().width) / 2;
@@ -41,7 +45,26 @@ public class WarenkorbGUI {
 		cp.setLayout(null);
 
 		// Anfang Komponenten
-		lGesamtPreis.setBounds(24, 591, 206, 37);
+		lAktuell.setBounds(24, 607, 206, 37);
+		lAktuell.setText("Aktueller Guthaben");
+		lAktuell.setHorizontalAlignment(SwingConstants.CENTER);
+		lAktuell.setHorizontalTextPosition(SwingConstants.CENTER);
+		lAktuell.setBackground(Color.CYAN);
+		lAktuell.setOpaque(true);
+		lAktuell.setFont(new Font("Dialog", Font.BOLD, 20));
+		cp.add(lAktuell);
+		
+		lGuthabenAktuell.setBounds(251, 607, 239, 37);
+		
+		lGuthabenAktuell.setText("0Ä");
+		lGuthabenAktuell.setHorizontalAlignment(SwingConstants.CENTER);
+		lGuthabenAktuell.setHorizontalTextPosition(SwingConstants.CENTER);
+		lGuthabenAktuell.setBackground(Color.CYAN);
+		lGuthabenAktuell.setOpaque(true);
+		lGuthabenAktuell.setFont(new Font("Dialog", Font.BOLD, 20));
+		cp.add(lGuthabenAktuell);
+		
+		lGesamtPreis.setBounds(24, 647, 206, 37);
 		lGesamtPreis.setText("Gesamt Preis");
 		lGesamtPreis.setHorizontalAlignment(SwingConstants.CENTER);
 		lGesamtPreis.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -49,7 +72,7 @@ public class WarenkorbGUI {
 		lGesamtPreis.setOpaque(true);
 		lGesamtPreis.setFont(new Font("Dialog", Font.BOLD, 20));
 		cp.add(lGesamtPreis);
-		bEinkaufabschliessen.setBounds(24, 683, 461, 58);
+		bEinkaufabschliessen.setBounds(24, 743, 461, 58);
 		bEinkaufabschliessen.setText("Einkaufabschlieﬂen");
 		bEinkaufabschliessen.setMargin(new Insets(2, 2, 2, 2));
 		bEinkaufabschliessen.addActionListener(new ActionListener() {
@@ -60,7 +83,20 @@ public class WarenkorbGUI {
 		bEinkaufabschliessen.setBackground(new Color(0xFFC800));
 		bEinkaufabschliessen.setFont(new Font("Dialog", Font.BOLD, 22));
 		cp.add(bEinkaufabschliessen);
-		lPreiseintragen.setBounds(251, 592, 239, 36);
+		
+		bZurueck.setBounds(24, 24, 90, 35);
+		bZurueck.setText("Zurueck");
+		bZurueck.setMargin(new Insets(2, 2, 2, 2));
+		bZurueck.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				bZurueck_ActionPerformed(evt);
+			}
+		});
+		bZurueck.setBackground(new Color(0xFFC800));
+		bZurueck.setFont(new Font("Dialog", Font.BOLD, 18));
+		cp.add(bZurueck);
+		
+		lPreiseintragen.setBounds(251, 647, 239, 36);
 		lPreiseintragen.setText(Integer.toString(preisEintragen) + "Ä");
 		lPreiseintragen.setFont(new Font("Dialog", Font.BOLD, 22));
 		lPreiseintragen.setBackground(Color.CYAN);
@@ -77,7 +113,7 @@ public class WarenkorbGUI {
 		jTable1.setDefaultEditor(Object.class, null);
 
 		for (Ware ware : warenlist) {
-			Vector row = new Vector();
+			Vector<String> row = new Vector<String>();
 			row.add(ware.getName());
 			row.add(ware.getPreis());
 			preisEintragen = preisEintragen + Integer.parseInt(ware.getPreis());/////////////////////////////
@@ -112,7 +148,7 @@ public class WarenkorbGUI {
 		lblBilanz.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBilanz.setFont(new Font("Dialog", Font.BOLD, 20));
 		lblBilanz.setBackground(Color.CYAN);
-		lblBilanz.setBounds(24, 636, 206, 37);
+		lblBilanz.setBounds(24, 686, 206, 37);
 		Warenkorb.getContentPane().add(lblBilanz);
 
 		lPreiseintragen_1.setText("0Ä");
@@ -121,7 +157,7 @@ public class WarenkorbGUI {
 		lPreiseintragen_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lPreiseintragen_1.setFont(new Font("Dialog", Font.BOLD, 22));
 		lPreiseintragen_1.setBackground(Color.CYAN);
-		lPreiseintragen_1.setBounds(251, 637, 239, 36);
+		lPreiseintragen_1.setBounds(251, 686, 239, 36);
 		Warenkorb.getContentPane().add(lPreiseintragen_1);
 		// Ende Komponenten
 		Datenladen();
@@ -134,6 +170,8 @@ public class WarenkorbGUI {
 		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
 		int bilanz = preisEintragen;
 		int aktguthaben;
+		guthabenAktl = Integer.parseInt(Liste[Stelle].getGuthaben());
+		lGuthabenAktuell.setText(guthabenAktl + "Ä");
 		try {
 			aktguthaben = Integer.parseInt(Liste[Stelle].getGuthaben());
 			bilanz = aktguthaben - bilanz;
@@ -153,20 +191,35 @@ public class WarenkorbGUI {
 	}
 
 	public void bEinkaufabschliessen_ActionPerformed(ActionEvent evt) {
+		String Username = LoginGUI.NAME;
+		int Stelle = InteractBenutzerdaten.StelleArray(Username);
+		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
+		if (Stelle != -1) {
+			Liste[Stelle].setGuthaben(Integer.toString(guthabenAktl - preisEintragen));
+			InteractBenutzerdaten.writeCSV(Liste);
+		}
+		int rows1 = jTable1.getRowCount();
+		for (int i = rows1 - 1; i >= 0; i--) {
+			model.removeRow(i);
+			warenlist.remove(i);
+		}
 		Warenkorb.dispose();
 		new EinkaufsPortalGUI();
-
 	}
 
 	public void bEinkaufabschliessen_1_ActionPerformed(ActionEvent evt) {
 		int[] rows = jTable1.getSelectedRows();
-		for (int i = 0; i < rows.length; i++) {
-			model.removeRow(rows[i] - i);
+		for (int i = rows.length - 1; i >= 0; i--) {
+			model.removeRow(rows[i]);
 			preisEintragen = preisEintragen - Integer.parseInt(warenlist.get(i).getPreis()); /////////////////////////////////////////
 			warenlist.remove(i);
-
 		}
 		Datenladen();
+	}
+	
+	public void bZurueck_ActionPerformed(ActionEvent evt) {
+		Warenkorb.dispose();
+		new EinkaufsPortalGUI();
 	}
 
 }
