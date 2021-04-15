@@ -23,7 +23,9 @@ public class WarenkorbGUI {
 	private DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 	private int preisEintragen = 0;
 	private JButton bZurueck = new JButton();
-	private JLabel lAktuellGuthaben = new JLabel();
+	private JLabel lAktuell = new JLabel();
+	private JLabel lGuthabenAktuell = new JLabel();
+	private int guthabenAktl = 0;
 	
 	JFrame Warenkorb = new JFrame();
 	// Ende Attribute
@@ -43,14 +45,24 @@ public class WarenkorbGUI {
 		cp.setLayout(null);
 
 		// Anfang Komponenten
-		lAktuellGuthaben.setBounds(24, 607, 206, 37);
-		lAktuellGuthaben.setText("Aktueller Guthaben");
-		lAktuellGuthaben.setHorizontalAlignment(SwingConstants.CENTER);
-		lAktuellGuthaben.setHorizontalTextPosition(SwingConstants.CENTER);
-		lAktuellGuthaben.setBackground(Color.CYAN);
-		lAktuellGuthaben.setOpaque(true);
-		lAktuellGuthaben.setFont(new Font("Dialog", Font.BOLD, 20));
-		cp.add(lAktuellGuthaben);
+		lAktuell.setBounds(24, 607, 206, 37);
+		lAktuell.setText("Aktueller Guthaben");
+		lAktuell.setHorizontalAlignment(SwingConstants.CENTER);
+		lAktuell.setHorizontalTextPosition(SwingConstants.CENTER);
+		lAktuell.setBackground(Color.CYAN);
+		lAktuell.setOpaque(true);
+		lAktuell.setFont(new Font("Dialog", Font.BOLD, 20));
+		cp.add(lAktuell);
+		
+		lGuthabenAktuell.setBounds(251, 607, 239, 37);
+		
+		lGuthabenAktuell.setText("0€");
+		lGuthabenAktuell.setHorizontalAlignment(SwingConstants.CENTER);
+		lGuthabenAktuell.setHorizontalTextPosition(SwingConstants.CENTER);
+		lGuthabenAktuell.setBackground(Color.CYAN);
+		lGuthabenAktuell.setOpaque(true);
+		lGuthabenAktuell.setFont(new Font("Dialog", Font.BOLD, 20));
+		cp.add(lGuthabenAktuell);
 		
 		lGesamtPreis.setBounds(24, 647, 206, 37);
 		lGesamtPreis.setText("Gesamt Preis");
@@ -158,6 +170,8 @@ public class WarenkorbGUI {
 		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
 		int bilanz = preisEintragen;
 		int aktguthaben;
+		guthabenAktl = Integer.parseInt(Liste[Stelle].getGuthaben());
+		lGuthabenAktuell.setText(guthabenAktl + "€");
 		try {
 			aktguthaben = Integer.parseInt(Liste[Stelle].getGuthaben());
 			bilanz = aktguthaben - bilanz;
@@ -177,6 +191,18 @@ public class WarenkorbGUI {
 	}
 
 	public void bEinkaufabschliessen_ActionPerformed(ActionEvent evt) {
+		String Username = LoginGUI.NAME;
+		int Stelle = InteractBenutzerdaten.StelleArray(Username);
+		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
+		if (Stelle != -1) {
+			Liste[Stelle].setGuthaben(Integer.toString(guthabenAktl - preisEintragen));
+			InteractBenutzerdaten.writeCSV(Liste);
+		}
+		int rows1 = jTable1.getRowCount();
+		for (int i = rows1 - 1; i >= 0; i--) {
+			model.removeRow(i);
+			warenlist.remove(i);
+		}
 		Warenkorb.dispose();
 		new EinkaufsPortalGUI();
 
@@ -188,7 +214,6 @@ public class WarenkorbGUI {
 			model.removeRow(rows[i] - i);
 			preisEintragen = preisEintragen - Integer.parseInt(warenlist.get(i).getPreis()); /////////////////////////////////////////
 			warenlist.remove(i);
-
 		}
 		Datenladen();
 	}
