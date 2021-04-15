@@ -5,6 +5,8 @@ import java.util.List;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
@@ -92,9 +94,8 @@ public class VerwaltungGUI {
 		jTextArea1.setEditable(false);
 		cp.add(jTextArea1ScrollPane);
 		jList1.setModel(jList1Model);
-		jList1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+		jList1.getSelectionModel().addListSelectionListener((ListSelectionListener) new ListSelectionListener() {
 
-			@Override
 			public void valueChanged(ListSelectionEvent arg0) {
 				temp = jList1.getSelectedValue();
 				jTextArea1.setText(temp.getBeschreibung());
