@@ -183,11 +183,8 @@ public class EinkaufsPortalGUI {
 		if (LoginGUI.NAME != null) {
 
 			if (LoginGUI.NAME.equals("admin")) {
-				System.out.println("JA ADMIN");
 				new VerwaltungGUI();
 				EinkaufsPortal.dispose();
-			} else {
-				System.out.println("NEEEIN :(");
 			}
 		}
 

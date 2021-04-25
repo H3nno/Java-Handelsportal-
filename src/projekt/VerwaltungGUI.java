@@ -1,26 +1,17 @@
 package projekt;
 
-import java.util.*;
-import java.util.List;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-/**
- *
- * Beschreibung
- *
- * @version 1.0 vom 25.03.2021
- * @author
- */
 
 public class VerwaltungGUI {
 	// Anfang Attribute
-	private Ware[] wareAtemp;
+	//private Ware[] wareAtemp;
 	private Ware temp;
-	private JLabel lEinkaufsportal = new JLabel();
+	private JLabel lProduktVerwaltung = new JLabel();
 	private JButton bHinzufuegen = new JButton();
 	private JButton bZurueck = new JButton();
 	private JTextArea jTextArea1 = new JTextArea("");
@@ -37,7 +28,11 @@ public class VerwaltungGUI {
 	private JButton bEntfernen = new JButton();
 	private JButton bSpeichern = new JButton();
 	private JButton bAbbrechen = new JButton();
+	
+	private JLabel StatusLabel = new JLabel();
+	
 	public int status = 0;
+	String NAME = "";
 
 	JFrame VerwaltungGUI = new JFrame();
 	// Ende Attribute
@@ -59,15 +54,16 @@ public class VerwaltungGUI {
 		cp.setLayout(null);
 		// Anfang Komponenten
 
-		lEinkaufsportal.setBounds(285, 34, 270, 76);
-		lEinkaufsportal.setText("Einkaufsportal");
-		lEinkaufsportal.setHorizontalAlignment(SwingConstants.CENTER);
-		lEinkaufsportal.setHorizontalTextPosition(SwingConstants.CENTER);
-		lEinkaufsportal.setFont(new Font("Dialog", Font.BOLD, 22));
-		lEinkaufsportal.setForeground(Color.BLACK);
-		lEinkaufsportal.setBackground(new Color(0xFFAFAF));
-		lEinkaufsportal.setOpaque(true);
-		cp.add(lEinkaufsportal);
+		lProduktVerwaltung.setBounds(285, 34, 270, 76);
+		lProduktVerwaltung.setText("Produkt Verwaltung");
+		lProduktVerwaltung.setHorizontalAlignment(SwingConstants.CENTER);
+		lProduktVerwaltung.setHorizontalTextPosition(SwingConstants.CENTER);
+		lProduktVerwaltung.setFont(new Font("Dialog", Font.BOLD, 22));
+		lProduktVerwaltung.setForeground(Color.BLACK);
+		lProduktVerwaltung.setBackground(new Color(0xFFAFAF));
+		lProduktVerwaltung.setOpaque(true);
+		cp.add(lProduktVerwaltung);
+		
 		bHinzufuegen.setBounds(57, 502, 275, 49);
 		bHinzufuegen.setText("Hinzufuegen");
 		bHinzufuegen.setMargin(new Insets(2, 2, 2, 2));
@@ -97,6 +93,17 @@ public class VerwaltungGUI {
 		jList1.getSelectionModel().addListSelectionListener((ListSelectionListener) new ListSelectionListener() {
 
 			public void valueChanged(ListSelectionEvent arg0) {
+				status = 0;
+				jTextArea1.setEditable(false);
+				jName.setEditable(false);
+				jTpreis.setEditable(false);
+				
+				
+				jName.setBackground(Color.WHITE);
+				jTpreis.setBackground(Color.WHITE);
+				jTextArea1.setBackground(Color.WHITE);
+				
+				
 				temp = jList1.getSelectedValue();
 				jTextArea1.setText(temp.getBeschreibung());
 				jName.setText(temp.getName());
@@ -148,6 +155,13 @@ public class VerwaltungGUI {
 			}
 		});
 		cp.add(bSpeichern);
+		
+		StatusLabel.setText("Status Text: qTEST");
+		StatusLabel.setBounds(814, 270,115,41);
+		cp.add(StatusLabel);
+		
+		
+		
 		bAbbrechen.setBounds(814, 367, 115, 41);
 		bAbbrechen.setText("Abbrechen");
 		bAbbrechen.setMargin(new Insets(2, 2, 2, 2));
@@ -167,9 +181,22 @@ public class VerwaltungGUI {
 
 	public void bHinzufuegen_ActionPerformed(ActionEvent evt) {
 		status = 1;
+		jName.setText("");
+		jTpreis.setText("");
+		jTextArea1.setText("");
+		
+		jTextArea1.setEditable(true);
+		jName.setEditable(true);
+		jTpreis.setEditable(true);
+		
+		
 		jName.setBackground(new Color(77, 255, 77));
 		jTpreis.setBackground(new Color(77, 255, 77));
 		jTextArea1.setBackground(new Color(77, 255, 77));
+		
+		
+		
+		
 
 	} // end of bHinzufuegen_ActionPerformed
 
@@ -181,9 +208,15 @@ public class VerwaltungGUI {
 
 	public void bBearbeiten_ActionPerformed(ActionEvent evt) {
 		status = 2;
+		
+		jTextArea1.setEditable(true);
+		jName.setEditable(true);
+		jTpreis.setEditable(true);
 		jName.setBackground(new Color(153, 255, 238));
 		jTpreis.setBackground(new Color(153, 255, 238));
 		jTextArea1.setBackground(new Color(153, 255, 238));
+		
+		NAME = jName.getText();
 
 	} // end of bBearbeiten_ActionPerformed
 
@@ -197,6 +230,71 @@ public class VerwaltungGUI {
 
 	public void bSpeichern_ActionPerformed(ActionEvent evt) {
 
+		String tempName = "";
+		String tempPreis = "";
+		String tempBesch = "";
+		
+		
+		
+		switch(status) {
+		case 0:
+			break;
+		case 1:
+			
+			tempName = jName.getText();
+			tempPreis = jTpreis.getText();
+			tempBesch = jTextArea1.getText();
+			int i = 0;
+			
+			Ware tempWare = new Ware(tempName,tempPreis,tempBesch);
+			
+			Ware[] ALT = InteractWarenListe.readCSV();
+			Ware[] NEU = new Ware[ALT.length + 1];
+			
+			for(i = 0; i<ALT.length; i++) {
+				NEU[i] = ALT[i];
+				
+			}
+			NEU[i] = tempWare;
+			
+			InteractWarenListe.writeCSV(NEU);
+			
+			
+			
+			
+			
+			
+			break;
+		case 2:
+			
+			tempName = jName.getText();
+			tempPreis = jTpreis.getText();
+			tempBesch = jTextArea1.getText();
+			
+			Ware[] Liste = InteractWarenListe.readCSV();
+			
+			int ID = InteractWarenListe.StelleArray(NAME);
+			
+			Liste[ID].setName(tempName);
+			Liste[ID].setPreis(tempPreis);
+			Liste[ID].setBeschreibung(tempBesch);
+			NAME = "";
+			
+			InteractWarenListe.writeCSV(Liste);
+			
+			
+			break;
+		case 3:
+			
+			
+			
+			
+			break;
+	}
+		
+		
+		
+		addWaren(); // @FINN gibts dazu nen pendant das man alles entfernt? erst entfernen danach mit addWaren() die gesamte Liste inkl neues Item neu anzeigen
 		status = 0;
 
 	} // end of bSpeichern_ActionPerformed
@@ -217,7 +315,7 @@ public class VerwaltungGUI {
 		}
 	}
 
-	public Ware[] statusAbfrage(int status) {
+	public Ware[] statusAbfrage(int status) { //versteh ich nicht? switch case doch direkt in den "Speichern" Button /HS @Finn
 		Ware[] WarenListe = InteractWarenListe.readCSV();
 		switch(status) {
 			case 0:

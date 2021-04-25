@@ -110,18 +110,18 @@ public class InteractWarenListe {
 	}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public static int StelleArray(String Username) {
+	public static int StelleArray(String Name) {
 
 		Ware[] Liste = readCSV();
-		int UserID = -1;
+		int NameID = -1;
 
 		for (int i = 0; i < Liste.length; i++) {
-			if (Username.equals(Liste[i].getName())) {
-				UserID = i;
+			if (Name.equals(Liste[i].getName())) {
+				NameID = i;
 			}
 		}
 
-		return UserID;
+		return NameID;
 
 	}
 }
