@@ -293,8 +293,8 @@ public class VerwaltungGUI {
 	}
 		
 		
-		
-		addWaren(); // @FINN gibts dazu nen pendant das man alles entfernt? erst entfernen danach mit addWaren() die gesamte Liste inkl neues Item neu anzeigen
+		wegWaren();
+		addWaren(); // @FINN gibts dazu nen Gegensteuck das man alles entfernt? erst entfernen danach mit addWaren() die gesamte Liste inkl neues Item neu anzeigen
 		status = 0;
 
 	} // end of bSpeichern_ActionPerformed
@@ -314,6 +314,13 @@ public class VerwaltungGUI {
 			jList1Model.addElement(WarenListe[i]);
 		}
 	}
+	public void wegWaren() {
+		
+		for (int i = 1; i < jList1Model.capacity(); i++) {
+			jList1Model.removeElement(i);
+		}
+	}
+	
 
 	public Ware[] statusAbfrage(int status) { //versteh ich nicht? switch case doch direkt in den "Speichern" Button /HS @Finn
 		Ware[] WarenListe = InteractWarenListe.readCSV();
