@@ -211,7 +211,7 @@ public class WarenkorbGUI {
 		int[] rows = jTable1.getSelectedRows();
 		for (int i = rows.length - 1; i >= 0; i--) {
 			model.removeRow(rows[i]);
-			preisEintragen = preisEintragen - Integer.parseInt(warenlist.get(i).getPreis()); /////////////////////////////////////////
+			preisEintragen = preisEintragen - Integer.parseInt(warenlist.get(i).getPreis());////////////merken
 			warenlist.remove(i);
 		}
 		Datenladen();

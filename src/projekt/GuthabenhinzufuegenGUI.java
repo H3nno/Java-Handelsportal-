@@ -42,11 +42,11 @@ public class GuthabenhinzufuegenGUI {
 		jNumberField1.setBounds(24, 107, 267, 52);
 		jNumberField1.setText("0");
 		cp.add(jNumberField1);
-		
-		AktuellesGTB.setBounds(24,60,267,52);
-		AktuellesGTB.setText("Aktuelles Guthaben: " + aktuellesGTB() + " €" );
+
+		AktuellesGTB.setBounds(24, 60, 267, 52);
+		AktuellesGTB.setText("Aktuelles Guthaben: " + aktuellesGTB() + " €");
 		cp.add(AktuellesGTB);
-		
+
 		lGuthabenhinzufuegen.setBounds(79, 13, 350, 52);
 		lGuthabenhinzufuegen.setText("Guthaben hinzufuegen");
 		lGuthabenhinzufuegen.setVisible(true);
@@ -114,7 +114,7 @@ public class GuthabenhinzufuegenGUI {
 			InteractBenutzerdaten.writeCSV(Liste);
 
 		} // end of bSenden_ActionPerformed
-		AktuellesGTB.setText("Aktuelles Guthaben: " + aktuellesGTB() + " €" );
+		AktuellesGTB.setText("Aktuelles Guthaben: " + aktuellesGTB() + " €");
 	}
 
 	public void bZurueck_ActionPerformed(ActionEvent evt) {
@@ -124,15 +124,13 @@ public class GuthabenhinzufuegenGUI {
 		GuthabenhinzufuegenGUI.dispose();
 
 	}
-	
+
 	public int aktuellesGTB() {
 		String Name = LoginGUI.NAME;
 		int Stelle = InteractBenutzerdaten.StelleArray(Name);
 		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
-		
-		
-		
+
 		return Integer.parseInt(Liste[Stelle].getGuthaben());
 	}
-	
-}// Ende Methoden // end of class guthabenhinzufuegen
+
+}

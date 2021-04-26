@@ -212,14 +212,14 @@ public class EinkaufsPortalGUI {
 		new BenutzerverwaltungGUI();
 
 	}
-	
+
 	public void addWaren() {
 		Ware[] WarenListe = InteractWarenListe.readCSV();
-		
-		for(int i = 1; i < WarenListe.length;i++) {
+
+		for (int i = 1; i < WarenListe.length; i++) {
 			Modell.addElement(WarenListe[i]);
 		}
-		
+
 	}
-	
-} // end of class Einkaufsportal
+
+}

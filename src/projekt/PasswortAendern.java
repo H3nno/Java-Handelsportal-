@@ -120,8 +120,6 @@ public class PasswortAendern {
 
 		int UserID = InteractBenutzerdaten.StelleArray(Username);
 
-		
-
 		if (UserID != -1) {
 			if (jPasswordAlt.getText().equals(Liste[UserID].getPasswort())) {
 
@@ -132,7 +130,7 @@ public class PasswortAendern {
 					Liste[UserID].setPasswort(jPasswordNeu1.getText());
 					InteractBenutzerdaten.writeCSV(Liste);
 
-					schlafen();
+					schlafen(); // schlafen funktion eig unnötig aber nette idee?
 					ChangePass.dispose();
 					new BenutzerverwaltungGUI();
 
