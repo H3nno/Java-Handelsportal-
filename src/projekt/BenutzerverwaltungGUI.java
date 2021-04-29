@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class BenutzerverwaltungGUI {
+public class benutzerverwaltungGUI {
 	// Anfang Attribute
 	private JLabel lBenutzerverwaltung = new JLabel();
 	private JLabel lAngemeldetals = new JLabel();
@@ -25,7 +25,8 @@ public class BenutzerverwaltungGUI {
 
 	JFrame BenutzerverwaltungGUI = new JFrame();
 
-	public BenutzerverwaltungGUI() {
+	public benutzerverwaltungGUI() {
+		
 		// Frame-Initialisierung
 		// super();
 		BenutzerverwaltungGUI.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -170,7 +171,7 @@ public class BenutzerverwaltungGUI {
 
 		BenutzerverwaltungGUI.setVisible(true);
 
-		DatenEintragen();
+		datenEintragen();
 	} // end of public Verwaltung
 
 	// Anfang Methoden
@@ -197,7 +198,7 @@ public class BenutzerverwaltungGUI {
 
 	}
 
-	public void DatenEintragen() {
+	public void datenEintragen() {
 
 		String Username = LoginGUI.NAME;
 		int Stelle = InteractBenutzerdaten.StelleArray(Username);
