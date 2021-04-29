@@ -60,7 +60,10 @@ public class InteractBenutzerdaten {
 		WieTief = 0;
 		return Kundenliste;
 	}
-
+/**
+ * beschreibt die CSV Datei
+ * @param Liste
+ */
 	public static void writeCSV(Benutzer[] Liste) {
 
 		FileWriter writer = null;

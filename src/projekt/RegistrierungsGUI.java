@@ -168,7 +168,6 @@ public class RegistrierungsGUI {
 			jStatus.setText("Benutzername Fehler");
 		}
 	}
-
 	public static boolean CheckPasswords(String pwd1, String pwd2) {
 		if (!pwd1.equals("") && !pwd2.equals("")) {
 			if (pwd1.equals(pwd2)) {
