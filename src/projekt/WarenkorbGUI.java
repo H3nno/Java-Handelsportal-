@@ -217,6 +217,17 @@ public class WarenkorbGUI {
 		datenLaden();
 	}
 	
+	
+	
+	//public void warenkorbLeeren() {
+		//int[] rows = jTable1.getSelectedRows();
+		//for (int i = rows.length - 1; i >= 0; i--) {
+			//model.removeRow(rows[i]); //////////////DA MÜSSEN WIR NOCH DRAN!!!!!!!!!!!!!!!!!! 
+			//warenlist.remove(i);
+//		}
+
+	//}
+	
 	public void bZurueck_ActionPerformed(ActionEvent evt) {
 		Warenkorb.dispose();
 		new EinkaufsPortalGUI();

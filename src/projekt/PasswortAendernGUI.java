@@ -125,12 +125,13 @@ public class PasswortAendernGUI {
 
 				if (RegistrierungsGUI.checkPasswords(jPasswordNeu1.getText(), jPasswordNeu2.getText())) {
 
-					jStatus.setText("Passwort erfolgreich geändert!"); // Text wird nicht angezeigt weil das Programm zu
-																		// schnell anfängt zu schlafen
-					Liste[UserID].setPasswort(jPasswordNeu1.getText()); //und anschließend zu schnell beendet
-					InteractBenutzerdaten.writeCSV(Liste);
+					jStatus.setText("Passwort erfolgreich geändert!");
 
-					schlafen(); // schlafen funktion eig unnötig aber nette idee?
+					Liste[UserID].setPasswort(jPasswordNeu1.getText());
+					InteractBenutzerdaten.writeCSV(Liste);
+					
+					//schlafen(); ---> Eigentlich sollte der Text "Passwort erfolgreich geändert!" angezeigt werden und lesbar sein bevor sich das Passwort ändern Feld schließt
+					// schlafen() pausiert aber aus irgend einem Grund das Programm bevor das jLabel mit dem neuen Text bestückt wurde -> aber die Methode wird doch erst danach aufgerufe?
 					ChangePass.dispose();
 					new BenutzerverwaltungGUI();
 
@@ -151,14 +152,13 @@ public class PasswortAendernGUI {
 
 	}
 
-	public void schlafen() {
-		try {
-			Thread.sleep(1500);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
+	/*
+	 * public void schlafen() { // nicht genutzt siehe
+	 * bPasswortAendern_ActionPerformed try { Thread.sleep(1500); } catch
+	 * (InterruptedException e) { // TODO Auto-generated catch block
+	 * e.printStackTrace(); }
+	 * 
+	 * }
+	 */
 
 }

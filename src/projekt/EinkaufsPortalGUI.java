@@ -196,6 +196,9 @@ public class EinkaufsPortalGUI {
 	public void abmelden_ActionPerformed(ActionEvent evt) {
 		new LoginGUI();
 		EinkaufsPortal.dispose();
+		
+		
+		
 
 	}
 

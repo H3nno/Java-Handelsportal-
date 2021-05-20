@@ -75,7 +75,7 @@ public class GuthabenHinzufuegenGUI {
 		cp.add(bZurueck);
 
 		lInfoText.setBounds(10, 164, 550, 84);
-		lInfoText.setText("Guthaben eintragen und auf Senden drücken.Warum brauchen wir überhaupt mehr ? Schanuze");
+		lInfoText.setText("Guthaben eintragen und auf Senden drücken");
 		lInfoText.setVerticalAlignment(SwingConstants.TOP);
 		lInfoText.setHorizontalAlignment(SwingConstants.LEFT);
 		lInfoText.setHorizontalTextPosition(SwingConstants.CENTER);
