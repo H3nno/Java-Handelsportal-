@@ -118,16 +118,16 @@ public class PasswortAendernGUI {
 		String Username = LoginGUI.NAME;
 		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
 
-		int UserID = InteractBenutzerdaten.StelleArray(Username);
+		int UserID = InteractBenutzerdaten.stelleArray(Username);
 
 		if (UserID != -1) {
 			if (jPasswordAlt.getText().equals(Liste[UserID].getPasswort())) {
 
-				if (RegistrierungsGUI.CheckPasswords(jPasswordNeu1.getText(), jPasswordNeu2.getText())) {
+				if (RegistrierungsGUI.checkPasswords(jPasswordNeu1.getText(), jPasswordNeu2.getText())) {
 
 					jStatus.setText("Passwort erfolgreich geändert!"); // Text wird nicht angezeigt weil das Programm zu
 																		// schnell anfängt zu schlafen
-					Liste[UserID].setPasswort(jPasswordNeu1.getText());
+					Liste[UserID].setPasswort(jPasswordNeu1.getText()); //und anschließend zu schnell beendet
 					InteractBenutzerdaten.writeCSV(Liste);
 
 					schlafen(); // schlafen funktion eig unnötig aber nette idee?

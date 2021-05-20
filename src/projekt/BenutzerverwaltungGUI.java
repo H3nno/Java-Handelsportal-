@@ -201,7 +201,7 @@ public class BenutzerverwaltungGUI {
 	public void datenEintragen() {
 
 		String Username = LoginGUI.NAME;
-		int Stelle = InteractBenutzerdaten.StelleArray(Username);
+		int Stelle = InteractBenutzerdaten.stelleArray(Username);
 		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
 
 		if (Stelle != -1) {

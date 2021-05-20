@@ -160,13 +160,13 @@ public class WarenkorbGUI {
 		lPreiseintragen_1.setBounds(251, 686, 239, 36);
 		Warenkorb.getContentPane().add(lPreiseintragen_1);
 		// Ende Komponenten
-		Datenladen();
+		datenLaden();
 		Warenkorb.setVisible(true);
 	}
 
-	public void Datenladen() {
+	public void datenLaden() {
 		String Username = LoginGUI.NAME;
-		int Stelle = InteractBenutzerdaten.StelleArray(Username);
+		int Stelle = InteractBenutzerdaten.stelleArray(Username);
 		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
 		int bilanz = preisEintragen;
 		int aktguthaben;
@@ -192,7 +192,7 @@ public class WarenkorbGUI {
 
 	public void bEinkaufabschliessen_ActionPerformed(ActionEvent evt) {
 		String Username = LoginGUI.NAME;
-		int Stelle = InteractBenutzerdaten.StelleArray(Username);
+		int Stelle = InteractBenutzerdaten.stelleArray(Username);
 		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
 		if (Stelle != -1) {
 			Liste[Stelle].setGuthaben(Integer.toString(guthabenAktl - preisEintragen));
@@ -214,7 +214,7 @@ public class WarenkorbGUI {
 			preisEintragen = preisEintragen - Integer.parseInt(warenlist.get(i).getPreis());////////////merken
 			warenlist.remove(i);
 		}
-		Datenladen();
+		datenLaden();
 	}
 	
 	public void bZurueck_ActionPerformed(ActionEvent evt) {

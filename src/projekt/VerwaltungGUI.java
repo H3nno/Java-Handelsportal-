@@ -250,7 +250,7 @@ public class VerwaltungGUI {
 
 			Ware[] Liste = InteractWarenListe.readCSV();
 
-			int ID = InteractWarenListe.StelleArray(NAME);
+			int ID = InteractWarenListe.stelleArray(NAME);
 
 			Liste[ID].setName(tempName);
 			Liste[ID].setPreis(tempPreis);
@@ -262,7 +262,7 @@ public class VerwaltungGUI {
 			break;
 		case 3:
 
-			int WareEntfernenID = InteractWarenListe.StelleArray(jName.getText());
+			int WareEntfernenID = InteractWarenListe.stelleArray(jName.getText());
 
 			Ware[] AlteListe = InteractWarenListe.readCSV();
 			Ware[] NeueListe = new Ware[AlteListe.length - 1];

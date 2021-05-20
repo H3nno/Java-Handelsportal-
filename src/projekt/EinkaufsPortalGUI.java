@@ -5,14 +5,6 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
-/**
- *
- * Beschreibung
- *
- * @version 1.0 vom 25.03.2021
- * @author
- */
-
 public class EinkaufsPortalGUI {
 	private JLabel lEinkaufsportal = new JLabel();
 	private JButton bWarenkorbhinzufuegen = new JButton();
@@ -102,7 +94,7 @@ public class EinkaufsPortalGUI {
 		Benutzerverwaltung.setMargin(new Insets(2, 2, 2, 2));
 		Benutzerverwaltung.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				Benutzerverwaltung_ActionPerformed(evt);
+				benutzerverwaltung_ActionPerformed(evt);
 			}
 		});
 		cp.add(Benutzerverwaltung);
@@ -113,7 +105,7 @@ public class EinkaufsPortalGUI {
 		Abmelden.setMargin(new Insets(2, 2, 2, 2));
 		Abmelden.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				Abmelden_ActionPerformed(evt);
+				abmelden_ActionPerformed(evt);
 			}
 		});
 		cp.add(Abmelden);
@@ -160,7 +152,7 @@ public class EinkaufsPortalGUI {
 		cp.add(lblNewLabel_1);
 
 		// Ende Komponenten
-		Datenladen();
+		datenLaden();
 		EinkaufsPortal.setVisible(true);
 	} // end of public Einkaufsportal
 
@@ -190,9 +182,9 @@ public class EinkaufsPortalGUI {
 
 	}
 
-	public void Datenladen() {
+	public void datenLaden() {
 		String Username = LoginGUI.NAME;
-		int Stelle = InteractBenutzerdaten.StelleArray(Username);
+		int Stelle = InteractBenutzerdaten.stelleArray(Username);
 		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
 
 		if (Stelle != -1) {
@@ -201,13 +193,13 @@ public class EinkaufsPortalGUI {
 		}
 	}
 
-	public void Abmelden_ActionPerformed(ActionEvent evt) {
+	public void abmelden_ActionPerformed(ActionEvent evt) {
 		new LoginGUI();
 		EinkaufsPortal.dispose();
 
 	}
 
-	public void Benutzerverwaltung_ActionPerformed(ActionEvent evt) {
+	public void benutzerverwaltung_ActionPerformed(ActionEvent evt) {
 		EinkaufsPortal.dispose();
 		new BenutzerverwaltungGUI();
 

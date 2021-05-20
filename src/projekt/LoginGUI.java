@@ -115,7 +115,7 @@ public class LoginGUI {
 	// Anfang Methoden
 
 	public void bLogin_ActionPerformed(ActionEvent evt) {
-		boolean Darf = LoginGUI.DarfLogin();
+		boolean Darf = LoginGUI.darfLogin();
 		if (Darf) {
 
 			NAME = jUsername.getText();
@@ -132,12 +132,12 @@ public class LoginGUI {
 	}
 
 	@SuppressWarnings("deprecation")
-	public static boolean DarfLogin() {
+	public static boolean darfLogin() {
 
 		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
 		String Username = jUsername.getText();
 
-		int UserID = InteractBenutzerdaten.StelleArray(Username);
+		int UserID = InteractBenutzerdaten.stelleArray(Username);
 
 		if (UserID != -1) {
 

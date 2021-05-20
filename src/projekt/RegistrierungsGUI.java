@@ -136,8 +136,8 @@ public class RegistrierungsGUI {
 	@SuppressWarnings("deprecation")
 	public void bJetztregistrierenundzurueckzumLogin_ActionPerformed(ActionEvent evt) {
 		jStatus.setText("");
-		if (RegistrierungsGUI.CheckUsername()) {
-			if (RegistrierungsGUI.CheckPasswords(jPassword1.getText(), jPassword2.getText())) {
+		if (RegistrierungsGUI.checkUsername()) {
+			if (RegistrierungsGUI.checkPasswords(jPassword1.getText(), jPassword2.getText())) {
 
 				Benutzer[] ListeALT = InteractBenutzerdaten.readCSV();
 				Benutzer[] ListeNEU = new Benutzer[ListeALT.length + 1];
@@ -168,7 +168,7 @@ public class RegistrierungsGUI {
 			jStatus.setText("Benutzername Fehler");
 		}
 	}
-	public static boolean CheckPasswords(String pwd1, String pwd2) {
+	public static boolean checkPasswords(String pwd1, String pwd2) {
 		if (!pwd1.equals("") && !pwd2.equals("")) {
 			if (pwd1.equals(pwd2)) {
 				return true;
@@ -177,10 +177,10 @@ public class RegistrierungsGUI {
 		return false;
 	}
 
-	public static boolean CheckUsername() {
+	public static boolean checkUsername() {
 		String Username = RegistrierungsGUI.jTFUsername.getText();
 
-		int Stelle = InteractBenutzerdaten.StelleArray(Username);
+		int Stelle = InteractBenutzerdaten.stelleArray(Username);
 
 		if (Stelle == -1) {
 			return true;

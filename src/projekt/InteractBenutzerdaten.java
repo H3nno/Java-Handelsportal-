@@ -101,7 +101,7 @@ public class InteractBenutzerdaten {
 
 	}
 
-	public static void AusgabeKundenliste() {
+	public static void ausgabeKundenliste() {
 
 		Benutzer[] AListe = readCSV();
 
@@ -113,7 +113,7 @@ public class InteractBenutzerdaten {
 
 	}
 
-	public static int StelleArray(String Username) {
+	public static int stelleArray(String Username) {
 
 		Benutzer[] Liste = readCSV();
 		int UserID = -1;

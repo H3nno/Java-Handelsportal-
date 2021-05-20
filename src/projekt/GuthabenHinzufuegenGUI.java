@@ -4,14 +4,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-/**
- *
- * Beschreibung
- *
- * @version 1.0 vom 05.04.2021
- * @author
- */
-
 public class GuthabenHinzufuegenGUI {
 	// Anfang Attribute
 	private JTextField jNumberField1 = new JTextField();
@@ -97,7 +89,7 @@ public class GuthabenHinzufuegenGUI {
 
 	public void bSenden_ActionPerformed(ActionEvent evt) {
 		String Username = LoginGUI.NAME;
-		int Stelle = InteractBenutzerdaten.StelleArray(Username);
+		int Stelle = InteractBenutzerdaten.stelleArray(Username);
 		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
 		int guthaben = 0;
 		int aktguthaben;
@@ -127,7 +119,7 @@ public class GuthabenHinzufuegenGUI {
 
 	public int aktuellesGTB() {
 		String Name = LoginGUI.NAME;
-		int Stelle = InteractBenutzerdaten.StelleArray(Name);
+		int Stelle = InteractBenutzerdaten.stelleArray(Name);
 		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
 
 		return Integer.parseInt(Liste[Stelle].getGuthaben());

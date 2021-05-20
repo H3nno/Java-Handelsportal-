@@ -94,7 +94,7 @@ public class InteractWarenListe {
 
 	}
 
-	public static void AusgabeWarenliste() {
+	public static void ausgabeWarenliste() {
 
 		Ware[] AListe = readCSV();
 
@@ -106,7 +106,7 @@ public class InteractWarenListe {
 
 	}
 
-	public static int StelleArray(String Name) {
+	public static int stelleArray(String Name) {
 
 		Ware[] Liste = readCSV();
 		int NameID = -1;
