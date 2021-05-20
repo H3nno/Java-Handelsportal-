@@ -120,7 +120,7 @@ public class GuthabenhinzufuegenGUI {
 	public void bZurueck_ActionPerformed(ActionEvent evt) {
 
 		jNumberField1.setText("");
-		new BenutzerverwaltungGUI();
+		new benutzerverwaltungGUI();
 		GuthabenhinzufuegenGUI.dispose();
 
 	}

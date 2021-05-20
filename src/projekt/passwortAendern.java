@@ -109,7 +109,7 @@ public class PasswortAendern {
 		jPasswordAlt.setText("");
 		jPasswordNeu1.setText("");
 		jPasswordNeu2.setText("");
-		new BenutzerverwaltungGUI();
+		new benutzerverwaltungGUI();
 	}
 
 	@SuppressWarnings("deprecation")
@@ -132,7 +132,7 @@ public class PasswortAendern {
 
 					schlafen(); // schlafen funktion eig unnötig aber nette idee?
 					ChangePass.dispose();
-					new BenutzerverwaltungGUI();
+					new benutzerverwaltungGUI();
 
 				}
 

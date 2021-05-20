@@ -209,7 +209,7 @@ public class EinkaufsPortalGUI {
 
 	public void Benutzerverwaltung_ActionPerformed(ActionEvent evt) {
 		EinkaufsPortal.dispose();
-		new BenutzerverwaltungGUI();
+		new benutzerverwaltungGUI();
 
 	}
 
