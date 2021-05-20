@@ -87,12 +87,12 @@ public class EinkaufsPortalGUI {
 				admin_ActionPerformed(evt);
 			}
 		});
-		if (LoginGUI.NAME.equals("admin")) {
+		if (loginGUI.NAME.equals("admin")) {
 			cp.add(admin);
 		}
 
 		AngemeldetAls.setBounds(700, 10, 150, 30);
-		AngemeldetAls.setText("Angemeldet als: " + LoginGUI.NAME);
+		AngemeldetAls.setText("Angemeldet als: " + loginGUI.NAME);
 
 		cp.add(AngemeldetAls);
 
@@ -180,9 +180,9 @@ public class EinkaufsPortalGUI {
 
 	public void admin_ActionPerformed(ActionEvent evt) {
 
-		if (LoginGUI.NAME != null) {
+		if (loginGUI.NAME != null) {
 
-			if (LoginGUI.NAME.equals("admin")) {
+			if (loginGUI.NAME.equals("admin")) {
 				new VerwaltungGUI();
 				EinkaufsPortal.dispose();
 			}
@@ -191,7 +191,7 @@ public class EinkaufsPortalGUI {
 	}
 
 	public void Datenladen() {
-		String Username = LoginGUI.NAME;
+		String Username = loginGUI.NAME;
 		int Stelle = InteractBenutzerdaten.StelleArray(Username);
 		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
 
@@ -202,7 +202,7 @@ public class EinkaufsPortalGUI {
 	}
 
 	public void Abmelden_ActionPerformed(ActionEvent evt) {
-		new LoginGUI();
+		new loginGUI();
 		EinkaufsPortal.dispose();
 
 	}

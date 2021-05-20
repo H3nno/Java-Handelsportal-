@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class LoginGUI {
+public class loginGUI {
 	// Anfang Attribute
 	private JLabel lEinkaufsladenonline = new JLabel();
 	private JLabel lEroeffnetam1872021 = new JLabel();
@@ -25,7 +25,7 @@ public class LoginGUI {
 
 	JFrame Login = new JFrame();
 
-	public LoginGUI() {
+	public loginGUI() {
 		// Frame-Initialisierung
 
 		// JFrame Login = new JFrame();
@@ -115,7 +115,7 @@ public class LoginGUI {
 	// Anfang Methoden
 
 	public void bLogin_ActionPerformed(ActionEvent evt) {
-		boolean Darf = LoginGUI.DarfLogin();
+		boolean Darf = loginGUI.DarfLogin();
 		if (Darf) {
 
 			NAME = jUsername.getText();

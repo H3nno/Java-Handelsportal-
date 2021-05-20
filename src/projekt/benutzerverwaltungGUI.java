@@ -177,12 +177,12 @@ public class benutzerverwaltungGUI {
 	// Anfang Methoden
 
 	public void bPasswortaendern_ActionPerformed(ActionEvent evt) {
-		new PasswortAendern();
+		new passwortAendern();
 		BenutzerverwaltungGUI.dispose();
 	}
 
 	public void bGuthabenhinzufuegen_ActionPerformed(ActionEvent evt) {
-		new GuthabenhinzufuegenGUI();
+		new guthabenhinzufuegenGUI();
 		BenutzerverwaltungGUI.dispose();
 	}
 
@@ -194,13 +194,13 @@ public class benutzerverwaltungGUI {
 
 	public void bAbmelden_ActionPerformed(ActionEvent evt) {
 		BenutzerverwaltungGUI.dispose();
-		new LoginGUI();
+		new loginGUI();
 
 	}
 
 	public void datenEintragen() {
 
-		String Username = LoginGUI.NAME;
+		String Username = loginGUI.NAME;
 		int Stelle = InteractBenutzerdaten.StelleArray(Username);
 		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
 

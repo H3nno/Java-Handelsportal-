@@ -12,7 +12,7 @@ import javax.swing.*;
  * @author
  */
 
-public class GuthabenhinzufuegenGUI {
+public class guthabenhinzufuegenGUI {
 	// Anfang Attribute
 	private JTextField jNumberField1 = new JTextField();
 	private JLabel AktuellesGTB = new JLabel();
@@ -23,7 +23,7 @@ public class GuthabenhinzufuegenGUI {
 	// Ende Attribute
 	JFrame GuthabenhinzufuegenGUI = new JFrame();
 
-	public GuthabenhinzufuegenGUI() {
+	public guthabenhinzufuegenGUI() {
 		// Frame-Initialisierung
 		GuthabenhinzufuegenGUI.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		int frameWidth = 600;
@@ -96,7 +96,7 @@ public class GuthabenhinzufuegenGUI {
 	// Anfang Methoden
 
 	public void bSenden_ActionPerformed(ActionEvent evt) {
-		String Username = LoginGUI.NAME;
+		String Username = loginGUI.NAME;
 		int Stelle = InteractBenutzerdaten.StelleArray(Username);
 		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
 		int guthaben = 0;
@@ -126,7 +126,7 @@ public class GuthabenhinzufuegenGUI {
 	}
 
 	public int aktuellesGTB() {
-		String Name = LoginGUI.NAME;
+		String Name = loginGUI.NAME;
 		int Stelle = InteractBenutzerdaten.StelleArray(Name);
 		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
 

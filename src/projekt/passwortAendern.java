@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class PasswortAendern {
+public class passwortAendern {
 	// Anfang Attribute
 	private JLabel lPasswortaendern = new JLabel();
 	private JLabel lAltesPasswort = new JLabel();
@@ -20,7 +20,7 @@ public class PasswortAendern {
 
 	JFrame ChangePass = new JFrame();
 
-	public PasswortAendern() {
+	public passwortAendern() {
 		// Frame-Initialisierung
 		super();
 		ChangePass.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -115,7 +115,7 @@ public class PasswortAendern {
 	@SuppressWarnings("deprecation")
 	public void bPasswortaendern_ActionPerformed(ActionEvent evt) {
 
-		String Username = LoginGUI.NAME;
+		String Username = loginGUI.NAME;
 		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
 
 		int UserID = InteractBenutzerdaten.StelleArray(Username);
