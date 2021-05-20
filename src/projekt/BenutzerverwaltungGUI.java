@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class benutzerverwaltungGUI {
+public class BenutzerverwaltungGUI {
 	// Anfang Attribute
 	private JLabel lBenutzerverwaltung = new JLabel();
 	private JLabel lAngemeldetals = new JLabel();
@@ -25,7 +25,7 @@ public class benutzerverwaltungGUI {
 
 	JFrame BenutzerverwaltungGUI = new JFrame();
 
-	public benutzerverwaltungGUI() {
+	public BenutzerverwaltungGUI() {
 		
 		// Frame-Initialisierung
 		// super();
@@ -177,12 +177,12 @@ public class benutzerverwaltungGUI {
 	// Anfang Methoden
 
 	public void bPasswortaendern_ActionPerformed(ActionEvent evt) {
-		new passwortAendern();
+		new PasswortAendernGUI();
 		BenutzerverwaltungGUI.dispose();
 	}
 
 	public void bGuthabenhinzufuegen_ActionPerformed(ActionEvent evt) {
-		new guthabenhinzufuegenGUI();
+		new GuthabenHinzufuegenGUI();
 		BenutzerverwaltungGUI.dispose();
 	}
 
@@ -194,13 +194,13 @@ public class benutzerverwaltungGUI {
 
 	public void bAbmelden_ActionPerformed(ActionEvent evt) {
 		BenutzerverwaltungGUI.dispose();
-		new loginGUI();
+		new LoginGUI();
 
 	}
 
 	public void datenEintragen() {
 
-		String Username = loginGUI.NAME;
+		String Username = LoginGUI.NAME;
 		int Stelle = InteractBenutzerdaten.StelleArray(Username);
 		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
 

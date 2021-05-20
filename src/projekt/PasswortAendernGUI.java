@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class passwortAendern {
+public class PasswortAendernGUI {
 	// Anfang Attribute
 	private JLabel lPasswortaendern = new JLabel();
 	private JLabel lAltesPasswort = new JLabel();
@@ -20,7 +20,7 @@ public class passwortAendern {
 
 	JFrame ChangePass = new JFrame();
 
-	public passwortAendern() {
+	public PasswortAendernGUI() {
 		// Frame-Initialisierung
 		super();
 		ChangePass.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -109,13 +109,13 @@ public class passwortAendern {
 		jPasswordAlt.setText("");
 		jPasswordNeu1.setText("");
 		jPasswordNeu2.setText("");
-		new benutzerverwaltungGUI();
+		new BenutzerverwaltungGUI();
 	}
 
 	@SuppressWarnings("deprecation")
 	public void bPasswortaendern_ActionPerformed(ActionEvent evt) {
 
-		String Username = loginGUI.NAME;
+		String Username = LoginGUI.NAME;
 		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
 
 		int UserID = InteractBenutzerdaten.StelleArray(Username);
@@ -132,7 +132,7 @@ public class passwortAendern {
 
 					schlafen(); // schlafen funktion eig unnötig aber nette idee?
 					ChangePass.dispose();
-					new benutzerverwaltungGUI();
+					new BenutzerverwaltungGUI();
 
 				}
 

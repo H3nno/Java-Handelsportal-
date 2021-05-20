@@ -165,7 +165,7 @@ public class WarenkorbGUI {
 	}
 
 	public void Datenladen() {
-		String Username = loginGUI.NAME;
+		String Username = LoginGUI.NAME;
 		int Stelle = InteractBenutzerdaten.StelleArray(Username);
 		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
 		int bilanz = preisEintragen;
@@ -191,7 +191,7 @@ public class WarenkorbGUI {
 	}
 
 	public void bEinkaufabschliessen_ActionPerformed(ActionEvent evt) {
-		String Username = loginGUI.NAME;
+		String Username = LoginGUI.NAME;
 		int Stelle = InteractBenutzerdaten.StelleArray(Username);
 		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
 		if (Stelle != -1) {

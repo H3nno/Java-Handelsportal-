@@ -129,7 +129,7 @@ public class RegistrierungsGUI {
 	// Methoden
 
 	public void bZurueckzumLogin_ActionPerformed(ActionEvent evt) {
-		new loginGUI();
+		new LoginGUI();
 		Registrierung.dispose();
 	}
 
@@ -160,7 +160,7 @@ public class RegistrierungsGUI {
 				InteractBenutzerdaten.writeCSV(ListeNEU);
 
 				Registrierung.dispose();
-				new loginGUI();
+				new LoginGUI();
 			} else {
 				jStatus.setText("Passwort Fehler");
 			}
