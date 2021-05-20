@@ -7,28 +7,28 @@ import java.io.IOException;
 
 public class InteractWarenListe {
 
-	static Ware[] Warenliste = null;
-	static int WieTief = 0;
+	static Ware[] warenliste = null;
+	static int wieTief = 0;
 
 	public static Ware[] readCSV() {
 
-		String Pfad = "src\\projekt\\WarenListe.csv";
+		String pfad = "src\\projekt\\WarenListe.csv";
 		String line;
-		BufferedReader BR1 = null;
-		BufferedReader BR = null;
-		String[][] Speichern = null;
+		BufferedReader bufferedReader1 = null;
+		BufferedReader bufferedReader = null;
+		String[][] speichern = null;
 		try {
-			BR1 = new BufferedReader(new FileReader(Pfad));
+			bufferedReader1 = new BufferedReader(new FileReader(pfad));
 			int z = 0;
-			while ((line = BR1.readLine()) != null) {
-				WieTief++;
+			while ((line = bufferedReader1.readLine()) != null) {
+				wieTief++;
 			}
-			Speichern = new String[WieTief][3];
-			BR = new BufferedReader(new FileReader(Pfad));
-			while ((line = BR.readLine()) != null) {
+			speichern = new String[wieTief][3];
+			bufferedReader = new BufferedReader(new FileReader(pfad));
+			while ((line = bufferedReader.readLine()) != null) {
 				String[] Spalten = line.split(";");
 				for (int j = 0; j < 3; j++) {
-					Speichern[z][j] = Spalten[j];
+					speichern[z][j] = Spalten[j];
 				}
 				z++;
 			}
@@ -36,29 +36,29 @@ public class InteractWarenListe {
 			e.printStackTrace();
 		} finally {
 			try {
-				BR1.close();
-				BR.close();
+				bufferedReader1.close();
+				bufferedReader.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 
-		Warenliste = new Ware[WieTief];
+		warenliste = new Ware[wieTief];
 
-		for (int i = 0; i < WieTief; i++) {
+		for (int i = 0; i < wieTief; i++) {
 
-			String tempName = Speichern[i][0];
-			String tempPreis = Speichern[i][1];
-			String tempBeschreibung = Speichern[i][2];
+			String tempName = speichern[i][0];
+			String tempPreis = speichern[i][1];
+			String tempBeschreibung = speichern[i][2];
 
 			// int tempPreisInt = Integer.parseInt(tempPreisString);
 
 			Ware temp = new Ware(tempName, tempPreis, tempBeschreibung);
 
-			Warenliste[i] = temp;
+			warenliste[i] = temp;
 		}
-		WieTief = 0;
-		return Warenliste;
+		wieTief = 0;
+		return warenliste;
 	}
 
 	public static void writeCSV(Ware[] Liste) {
@@ -96,11 +96,11 @@ public class InteractWarenListe {
 
 	public static void ausgabeWarenliste() {
 
-		Ware[] AListe = readCSV();
+		Ware[] ausgabeWarenListe = readCSV();
 
-		for (int i = 0; i < AListe.length; i++) {
-			System.out.println("WarenID" + i + " " + AListe[i].getName() + " " + AListe[i].getPreis() + " "
-					+ AListe[i].getBeschreibung());
+		for (int i = 0; i < ausgabeWarenListe.length; i++) {
+			System.out.println("WarenID" + i + " " + ausgabeWarenListe[i].getName() + " " + ausgabeWarenListe[i].getPreis() + " "
+					+ ausgabeWarenListe[i].getBeschreibung());
 
 		}
 
@@ -108,16 +108,16 @@ public class InteractWarenListe {
 
 	public static int stelleArray(String Name) {
 
-		Ware[] Liste = readCSV();
-		int NameID = -1;
+		Ware[] stelleArrayListe = readCSV();
+		int nameID = -1;
 
-		for (int i = 0; i < Liste.length; i++) {
-			if (Name.equals(Liste[i].getName())) {
-				NameID = i;
+		for (int i = 0; i < stelleArrayListe.length; i++) {
+			if (Name.equals(stelleArrayListe[i].getName())) {
+				nameID = i;
 			}
 		}
 
-		return NameID;
+		return nameID;
 
 	}
 }

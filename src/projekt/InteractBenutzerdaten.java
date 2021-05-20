@@ -7,28 +7,28 @@ import java.io.IOException;
 
 public class InteractBenutzerdaten {
 
-	static Benutzer[] Kundenliste = null;
-	static int WieTief = 0;
+	static Benutzer[] kundenliste = null;
+	static int wieTief = 0;
 
 	public static Benutzer[] readCSV() { // vorübergehend Static
 
-		String Pfad = "src\\projekt\\Benutzerdaten.csv";
+		String pfad = "src\\projekt\\Benutzerdaten.csv";
 		String line;
-		BufferedReader BR1 = null;
-		BufferedReader BR = null;
-		String[][] Speichern = null;
+		BufferedReader bufferedReader2 = null;
+		BufferedReader bufferedReader = null;
+		String[][] speichern = null;
 		try {
-			BR1 = new BufferedReader(new FileReader(Pfad));
+			bufferedReader2 = new BufferedReader(new FileReader(pfad));
 			int z = 0;
-			while ((line = BR1.readLine()) != null) {
-				WieTief++;
+			while ((line = bufferedReader2.readLine()) != null) {
+				wieTief++;
 			}
-			Speichern = new String[WieTief][5];
-			BR = new BufferedReader(new FileReader(Pfad));
-			while ((line = BR.readLine()) != null) {
+			speichern = new String[wieTief][5];
+			bufferedReader = new BufferedReader(new FileReader(pfad));
+			while ((line = bufferedReader.readLine()) != null) {
 				String[] Spalten = line.split(";");
 				for (int j = 0; j < 5; j++) {
-					Speichern[z][j] = Spalten[j];
+					speichern[z][j] = Spalten[j];
 				}
 				z++;
 			}
@@ -36,34 +36,31 @@ public class InteractBenutzerdaten {
 			e.printStackTrace();
 		} finally {
 			try {
-				BR1.close();
-				BR.close();
+				bufferedReader2.close();
+				bufferedReader.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 
-		Kundenliste = new Benutzer[WieTief];
+		kundenliste = new Benutzer[wieTief];
 
-		for (int i = 0; i < WieTief; i++) {
+		for (int i = 0; i < wieTief; i++) {
 
-			String tempVorname = Speichern[i][0];
-			String tempNachname = Speichern[i][1];
-			String tempUsername = Speichern[i][2];
-			String tempPassword = Speichern[i][3];
-			String tempGuthaben = /* Integer.parseInt( */Speichern[i][4]/* ) */;
+			String tempVorname = speichern[i][0];
+			String tempNachname = speichern[i][1];
+			String tempUsername = speichern[i][2];
+			String tempPassword = speichern[i][3];
+			String tempGuthaben = /* Integer.parseInt( */speichern[i][4]/* ) */;
 
 			Benutzer temp = new Benutzer(tempVorname, tempNachname, tempUsername, tempPassword, tempGuthaben);
 
-			Kundenliste[i] = temp;
+			kundenliste[i] = temp;
 		}
-		WieTief = 0;
-		return Kundenliste;
+		wieTief = 0;
+		return kundenliste;
 	}
-/**
- * beschreibt die CSV Datei
- * @param Liste
- */
+
 	public static void writeCSV(Benutzer[] Liste) {
 
 		FileWriter writer = null;
@@ -103,11 +100,11 @@ public class InteractBenutzerdaten {
 
 	public static void ausgabeKundenliste() {
 
-		Benutzer[] AListe = readCSV();
+		Benutzer[] ausgabeKundenListe = readCSV();
 
-		for (int i = 0; i < AListe.length; i++) {
-			System.out.println("Kunde " + i + " " + AListe[i].getVorname() + " " + AListe[i].getNachname() + " "
-					+ AListe[i].getUsername() + " " + AListe[i].getPasswort() + " " + AListe[i].getGuthaben());
+		for (int i = 0; i < ausgabeKundenListe.length; i++) {
+			System.out.println("Kunde " + i + " " + ausgabeKundenListe[i].getVorname() + " " + ausgabeKundenListe[i].getNachname() + " "
+					+ ausgabeKundenListe[i].getUsername() + " " + ausgabeKundenListe[i].getPasswort() + " " + ausgabeKundenListe[i].getGuthaben());
 
 		}
 
@@ -115,16 +112,16 @@ public class InteractBenutzerdaten {
 
 	public static int stelleArray(String Username) {
 
-		Benutzer[] Liste = readCSV();
-		int UserID = -1;
+		Benutzer[] stelleArrayListe = readCSV();
+		int userID = -1;
 
-		for (int i = 0; i < Liste.length; i++) {
-			if (Username.equals(Liste[i].getUsername())) {
-				UserID = i;
+		for (int i = 0; i < stelleArrayListe.length; i++) {
+			if (Username.equals(stelleArrayListe[i].getUsername())) {
+				userID = i;
 			}
 		}
 
-		return UserID;
+		return userID;
 
 	}
 }

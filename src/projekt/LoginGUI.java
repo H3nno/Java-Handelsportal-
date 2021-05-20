@@ -18,30 +18,26 @@ public class LoginGUI {
 	public static JPasswordField jPasswordField1 = new JPasswordField();
 	// Ende Attribute
 
-	// static String[][] Speichern;
-	static int WieTief = 0;
+	static int wieTief = 0;
 
-	public static String NAME;
+	public static String globalNAME;
 
-	JFrame Login = new JFrame();
+	JFrame loginGUI = new JFrame();
 
 	public LoginGUI() {
 		// Frame-Initialisierung
 
-		// JFrame Login = new JFrame();
-
-		// super();
-		Login.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		loginGUI.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		int frameWidth = 615;
 		int frameHeight = 571;
-		Login.setSize(frameWidth, frameHeight);
+		loginGUI.setSize(frameWidth, frameHeight);
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-		int x = (d.width - Login.getSize().width) / 2;
-		int y = (d.height - Login.getSize().height) / 2;
-		Login.setLocation(x, y);
-		Login.setTitle("LoginGUI");
-		Login.setResizable(false);
-		Container cp = Login.getContentPane();
+		int x = (d.width - loginGUI.getSize().width) / 2;
+		int y = (d.height - loginGUI.getSize().height) / 2;
+		loginGUI.setLocation(x, y);
+		loginGUI.setTitle("LoginGUI");
+		loginGUI.setResizable(false);
+		Container cp = loginGUI.getContentPane();
 		cp.setLayout(null);
 		// Anfang Komponenten
 
@@ -102,24 +98,24 @@ public class LoginGUI {
 		});
 		bHierklicken.setBackground(new Color(0xFFC800));
 		cp.add(bHierklicken);
-		Login.setUndecorated(false);
+		loginGUI.setUndecorated(false);
 		cp.setBackground(new Color(0xEEEEEE));
 		jPasswordField1.setBounds(184, 312, 209, 33);
 		cp.add(jPasswordField1);
 		// Ende Komponenten
 
-		Login.setVisible(true);
+		loginGUI.setVisible(true);
 
 	}
 
 	// Anfang Methoden
 
 	public void bLogin_ActionPerformed(ActionEvent evt) {
-		boolean Darf = LoginGUI.darfLogin();
-		if (Darf) {
+		boolean darf = LoginGUI.darfLogin();
+		if (darf) {
 
-			NAME = jUsername.getText();
-			Login.dispose();
+			globalNAME = jUsername.getText();
+			loginGUI.dispose();
 			new EinkaufsPortalGUI();
 			jUsername.setText("");
 			jPasswordField1.setText("");
@@ -128,20 +124,20 @@ public class LoginGUI {
 
 	public void bHierklicken_ActionPerformed(ActionEvent evt) {
 		new RegistrierungsGUI();
-		Login.dispose();
+		loginGUI.dispose();
 	}
 
 	@SuppressWarnings("deprecation")
 	public static boolean darfLogin() {
 
-		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
-		String Username = jUsername.getText();
+		Benutzer[] darfLoginListe = InteractBenutzerdaten.readCSV();
+		String username = jUsername.getText();
 
-		int UserID = InteractBenutzerdaten.stelleArray(Username);
+		int UserID = InteractBenutzerdaten.stelleArray(username);
 
 		if (UserID != -1) {
 
-			if (Liste[UserID].getPasswort().equals(jPasswordField1.getText())) {
+			if (darfLoginListe[UserID].getPasswort().equals(jPasswordField1.getText())) {
 
 				lStatus.setText("Erfolgreich");
 				return true;

@@ -23,23 +23,23 @@ public class BenutzerverwaltungGUI {
 	private JButton bAbmelden = new JButton();
 	// Ende Attribute
 
-	JFrame BenutzerverwaltungGUI = new JFrame();
+	JFrame benutzerVerwaltungGUI = new JFrame();
 
 	public BenutzerverwaltungGUI() {
 		
 		// Frame-Initialisierung
 		// super();
-		BenutzerverwaltungGUI.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		benutzerVerwaltungGUI.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		int frameWidth = 527;
 		int frameHeight = 637;
-		BenutzerverwaltungGUI.setSize(frameWidth, frameHeight);
+		benutzerVerwaltungGUI.setSize(frameWidth, frameHeight);
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-		int x = (d.width - BenutzerverwaltungGUI.getSize().width) / 2;
-		int y = (d.height - BenutzerverwaltungGUI.getSize().height) / 2;
-		BenutzerverwaltungGUI.setLocation(x, y);
-		BenutzerverwaltungGUI.setTitle("Verwaltung");
-		BenutzerverwaltungGUI.setResizable(false);
-		Container cp = BenutzerverwaltungGUI.getContentPane();
+		int x = (d.width - benutzerVerwaltungGUI.getSize().width) / 2;
+		int y = (d.height - benutzerVerwaltungGUI.getSize().height) / 2;
+		benutzerVerwaltungGUI.setLocation(x, y);
+		benutzerVerwaltungGUI.setTitle("Verwaltung");
+		benutzerVerwaltungGUI.setResizable(false);
+		Container cp = benutzerVerwaltungGUI.getContentPane();
 		cp.setLayout(null);
 		// Anfang Komponenten
 
@@ -169,7 +169,7 @@ public class BenutzerverwaltungGUI {
 		cp.add(bAbmelden);
 		// Ende Komponenten
 
-		BenutzerverwaltungGUI.setVisible(true);
+		benutzerVerwaltungGUI.setVisible(true);
 
 		datenEintragen();
 	} // end of public Verwaltung
@@ -178,29 +178,29 @@ public class BenutzerverwaltungGUI {
 
 	public void bPasswortaendern_ActionPerformed(ActionEvent evt) {
 		new PasswortAendernGUI();
-		BenutzerverwaltungGUI.dispose();
+		benutzerVerwaltungGUI.dispose();
 	}
 
 	public void bGuthabenhinzufuegen_ActionPerformed(ActionEvent evt) {
 		new GuthabenHinzufuegenGUI();
-		BenutzerverwaltungGUI.dispose();
+		benutzerVerwaltungGUI.dispose();
 	}
 
 	public void bZurueck_ActionPerformed(ActionEvent evt) {
-		BenutzerverwaltungGUI.dispose();
+		benutzerVerwaltungGUI.dispose();
 		new EinkaufsPortalGUI();
 
 	}
 
 	public void bAbmelden_ActionPerformed(ActionEvent evt) {
-		BenutzerverwaltungGUI.dispose();
+		benutzerVerwaltungGUI.dispose();
 		new LoginGUI();
 
 	}
 
 	public void datenEintragen() {
 
-		String Username = LoginGUI.NAME;
+		String Username = LoginGUI.globalNAME;
 		int Stelle = InteractBenutzerdaten.stelleArray(Username);
 		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
 

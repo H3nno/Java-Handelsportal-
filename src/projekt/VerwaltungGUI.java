@@ -8,7 +8,7 @@ import javax.swing.event.ListSelectionListener;
 
 public class VerwaltungGUI {
 	
-	private Ware temp;
+	private Ware tempWare;
 	private JLabel lProduktVerwaltung = new JLabel();
 	private JButton bHinzufuegen = new JButton();
 	private JButton bZurueck = new JButton();
@@ -28,25 +28,25 @@ public class VerwaltungGUI {
 	private JButton bAbbrechen = new JButton();
 	//private JLabel lStatusLabel = new JLabel(); tut nicht was es soll, Status label ist über dem "Speichern" Button
 	public int status = 0;
-	String NAME = "";
+	String halbGlobalNAME = "";
 
-	JFrame VerwaltungGUI = new JFrame();
+	JFrame verwaltungGUI = new JFrame();
 	// Ende Attribute
 
 	public VerwaltungGUI() {
 		// Frame-Initialisierung
 		addWaren();
-		VerwaltungGUI.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		verwaltungGUI.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		int frameWidth = 1011;
 		int frameHeight = 730;
-		VerwaltungGUI.setSize(frameWidth, frameHeight);
+		verwaltungGUI.setSize(frameWidth, frameHeight);
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-		int x = (d.width - VerwaltungGUI.getSize().width) / 2;
-		int y = (d.height - VerwaltungGUI.getSize().height) / 2;
-		VerwaltungGUI.setLocation(x, y);
-		VerwaltungGUI.setTitle("Einkaufsportal");
-		VerwaltungGUI.setResizable(false);
-		Container cp = VerwaltungGUI.getContentPane();
+		int x = (d.width - verwaltungGUI.getSize().width) / 2;
+		int y = (d.height - verwaltungGUI.getSize().height) / 2;
+		verwaltungGUI.setLocation(x, y);
+		verwaltungGUI.setTitle("Einkaufsportal");
+		verwaltungGUI.setResizable(false);
+		Container cp = verwaltungGUI.getContentPane();
 		cp.setLayout(null);
 		// Anfang Komponenten
 
@@ -97,10 +97,10 @@ public class VerwaltungGUI {
 				jPreis.setBackground(Color.WHITE);
 				jBeschreibungArea.setBackground(Color.WHITE);
 
-				temp = jWarenliste.getSelectedValue();
-					jName.setText(temp.getName());
-					jPreis.setText(temp.getPreis());
-					jBeschreibungArea.setText(temp.getBeschreibung());
+				tempWare = jWarenliste.getSelectedValue();
+					jName.setText(tempWare.getName());
+					jPreis.setText(tempWare.getPreis());
+					jBeschreibungArea.setText(tempWare.getBeschreibung());
 			}
 		});
 		jBeschreibung.setBounds(57, 164, 302, 324);
@@ -165,7 +165,7 @@ public class VerwaltungGUI {
 			}
 		});
 		cp.add(bAbbrechen);
-		VerwaltungGUI.setVisible(true);
+		verwaltungGUI.setVisible(true);
 	}
 
 	// Anfang Methoden
@@ -185,7 +185,7 @@ public class VerwaltungGUI {
 	} // end of bHinzufuegen_ActionPerformed
 
 	public void bZurueck_ActionPerformed(ActionEvent evt) {
-		VerwaltungGUI.dispose();
+		verwaltungGUI.dispose();
 		new EinkaufsPortalGUI();
 
 	} // end of bZurueck_ActionPerformed
@@ -200,7 +200,7 @@ public class VerwaltungGUI {
 		jPreis.setBackground(new Color(153, 255, 238));
 		jBeschreibungArea.setBackground(new Color(153, 255, 238));
 
-		NAME = jName.getText();
+		halbGlobalNAME = jName.getText();
 
 	} // end of bBearbeiten_ActionPerformed
 
@@ -250,12 +250,12 @@ public class VerwaltungGUI {
 
 			Ware[] Liste = InteractWarenListe.readCSV();
 
-			int ID = InteractWarenListe.stelleArray(NAME);
+			int ID = InteractWarenListe.stelleArray(halbGlobalNAME);
 
 			Liste[ID].setName(tempName);
 			Liste[ID].setPreis(tempPreis);
 			Liste[ID].setBeschreibung(tempBesch);
-			NAME = "";
+			halbGlobalNAME = "";
 
 			InteractWarenListe.writeCSV(Liste);
 
@@ -264,23 +264,23 @@ public class VerwaltungGUI {
 
 			int WareEntfernenID = InteractWarenListe.stelleArray(jName.getText());
 
-			Ware[] AlteListe = InteractWarenListe.readCSV();
-			Ware[] NeueListe = new Ware[AlteListe.length - 1];
+			Ware[] alteListe = InteractWarenListe.readCSV();
+			Ware[] neueListe = new Ware[alteListe.length - 1];
 
 			for (int z = 0; z < WareEntfernenID; z++) {
-				NeueListe[z] = AlteListe[z];
+				neueListe[z] = alteListe[z];
 
 			}
-			for (int z = WareEntfernenID; z < AlteListe.length - 1; z++) {
-				NeueListe[z] = AlteListe[z + 1];
+			for (int z = WareEntfernenID; z < alteListe.length - 1; z++) {
+				neueListe[z] = alteListe[z + 1];
 
 			}
-			InteractWarenListe.writeCSV(NeueListe);
+			InteractWarenListe.writeCSV(neueListe);
 
 			break;
 		}
 
-		VerwaltungGUI.dispose();
+		verwaltungGUI.dispose();
 		new VerwaltungGUI();
 		//lStatusLabel.setText("Erfolgreich gespeichert"); funzt nicht aber status label ist theoretisch da 
 		status = 0;

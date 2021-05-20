@@ -18,22 +18,22 @@ public class PasswortAendernGUI {
 	private JButton bPasswortaendern = new JButton();
 	// Ende Attribute
 
-	JFrame ChangePass = new JFrame();
+	JFrame passwortAendernGUI = new JFrame();
 
 	public PasswortAendernGUI() {
 		// Frame-Initialisierung
 		super();
-		ChangePass.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		passwortAendernGUI.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		int frameWidth = 575;
 		int frameHeight = 376;
-		ChangePass.setSize(frameWidth, frameHeight);
+		passwortAendernGUI.setSize(frameWidth, frameHeight);
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-		int x = (d.width - ChangePass.getSize().width) / 2;
-		int y = (d.height - ChangePass.getSize().height) / 2;
-		ChangePass.setLocation(x, y);
-		ChangePass.setTitle("PasswortAendern");
-		ChangePass.setResizable(false);
-		Container cp = ChangePass.getContentPane();
+		int x = (d.width - passwortAendernGUI.getSize().width) / 2;
+		int y = (d.height - passwortAendernGUI.getSize().height) / 2;
+		passwortAendernGUI.setLocation(x, y);
+		passwortAendernGUI.setTitle("PasswortAendern");
+		passwortAendernGUI.setResizable(false);
+		Container cp = passwortAendernGUI.getContentPane();
 		cp.setLayout(null);
 		// Anfang Komponenten
 
@@ -98,14 +98,14 @@ public class PasswortAendernGUI {
 		cp.add(bPasswortaendern);
 		// Ende Komponenten
 
-		ChangePass.setVisible(true);
+		passwortAendernGUI.setVisible(true);
 	} // end of public PasswortAendern
 
 	// Anfang Methoden
 
 	public void bZurueck_ActionPerformed(ActionEvent evt) {
 
-		ChangePass.dispose();
+		passwortAendernGUI.dispose();
 		jPasswordAlt.setText("");
 		jPasswordNeu1.setText("");
 		jPasswordNeu2.setText("");
@@ -115,24 +115,27 @@ public class PasswortAendernGUI {
 	@SuppressWarnings("deprecation")
 	public void bPasswortaendern_ActionPerformed(ActionEvent evt) {
 
-		String Username = LoginGUI.NAME;
-		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
+		String username = LoginGUI.globalNAME;
+		Benutzer[] liste = InteractBenutzerdaten.readCSV();
 
-		int UserID = InteractBenutzerdaten.stelleArray(Username);
+		int userID = InteractBenutzerdaten.stelleArray(username);
 
-		if (UserID != -1) {
-			if (jPasswordAlt.getText().equals(Liste[UserID].getPasswort())) {
+		if (userID != -1) {
+			if (jPasswordAlt.getText().equals(liste[userID].getPasswort())) {
 
 				if (RegistrierungsGUI.checkPasswords(jPasswordNeu1.getText(), jPasswordNeu2.getText())) {
 
 					jStatus.setText("Passwort erfolgreich geändert!");
 
-					Liste[UserID].setPasswort(jPasswordNeu1.getText());
-					InteractBenutzerdaten.writeCSV(Liste);
-					
-					//schlafen(); ---> Eigentlich sollte der Text "Passwort erfolgreich geändert!" angezeigt werden und lesbar sein bevor sich das Passwort ändern Feld schließt
-					// schlafen() pausiert aber aus irgend einem Grund das Programm bevor das jLabel mit dem neuen Text bestückt wurde -> aber die Methode wird doch erst danach aufgerufe?
-					ChangePass.dispose();
+					liste[userID].setPasswort(jPasswordNeu1.getText());
+					InteractBenutzerdaten.writeCSV(liste);
+
+					// schlafen(); ---> Eigentlich sollte der Text "Passwort erfolgreich geändert!"
+					// angezeigt werden und lesbar sein bevor sich das Passwort ändern Feld schließt
+					// schlafen() pausiert aber aus irgend einem Grund das Programm bevor das jLabel
+					// mit dem neuen Text bestückt wurde -> aber die Methode wird doch erst danach
+					// aufgerufe?
+					passwortAendernGUI.dispose();
 					new BenutzerverwaltungGUI();
 
 				}
@@ -152,13 +155,12 @@ public class PasswortAendernGUI {
 
 	}
 
-	/*
-	 * public void schlafen() { // nicht genutzt siehe
-	 * bPasswortAendern_ActionPerformed try { Thread.sleep(1500); } catch
-	 * (InterruptedException e) { // TODO Auto-generated catch block
-	 * e.printStackTrace(); }
-	 * 
-	 * }
-	 */
+//	public void schlafen() { // nicht genutzt siehe bPasswortAendern_ActionPerformed
+//		try {
+//			Thread.sleep(1500);
+//		} catch (InterruptedException e) { // TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 
 }

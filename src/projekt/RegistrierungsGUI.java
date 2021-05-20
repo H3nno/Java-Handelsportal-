@@ -22,24 +22,24 @@ public class RegistrierungsGUI {
 	private JButton bZurueckzumLogin = new JButton();
 	// Ende Attribute
 
-	JFrame Registrierung = new JFrame();
-	static int WieTief = 0;
-	static String[][] Speichern;
+	JFrame registrierungGUI = new JFrame();
+	static int wieTief = 0;
+	static String[][] speichern;
 
 	public RegistrierungsGUI() {
 		// Frame-Initialisierung
 		// super();
-		Registrierung.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		registrierungGUI.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		int frameWidth = 498;
 		int frameHeight = 550;
-		Registrierung.setSize(frameWidth, frameHeight);
+		registrierungGUI.setSize(frameWidth, frameHeight);
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-		int x = (d.width - Registrierung.getSize().width) / 2;
-		int y = (d.height - Registrierung.getSize().height) / 2;
-		Registrierung.setLocation(x, y);
-		Registrierung.setTitle("RegistrierungGUI");
-		Registrierung.setResizable(false);
-		Container cp = Registrierung.getContentPane();
+		int x = (d.width - registrierungGUI.getSize().width) / 2;
+		int y = (d.height - registrierungGUI.getSize().height) / 2;
+		registrierungGUI.setLocation(x, y);
+		registrierungGUI.setTitle("RegistrierungGUI");
+		registrierungGUI.setResizable(false);
+		Container cp = registrierungGUI.getContentPane();
 		cp.setLayout(null);
 		// Anfang Komponenten
 
@@ -123,14 +123,14 @@ public class RegistrierungsGUI {
 		cp.add(bZurueckzumLogin);
 		// Ende Komponenten
 
-		Registrierung.setVisible(true);
+		registrierungGUI.setVisible(true);
 	}
 
 	// Methoden
 
 	public void bZurueckzumLogin_ActionPerformed(ActionEvent evt) {
 		new LoginGUI();
-		Registrierung.dispose();
+		registrierungGUI.dispose();
 	}
 
 	@SuppressWarnings("deprecation")
@@ -139,8 +139,8 @@ public class RegistrierungsGUI {
 		if (RegistrierungsGUI.checkUsername()) {
 			if (RegistrierungsGUI.checkPasswords(jPassword1.getText(), jPassword2.getText())) {
 
-				Benutzer[] ListeALT = InteractBenutzerdaten.readCSV();
-				Benutzer[] ListeNEU = new Benutzer[ListeALT.length + 1];
+				Benutzer[] listeALT = InteractBenutzerdaten.readCSV();
+				Benutzer[] listeNEU = new Benutzer[listeALT.length + 1];
 
 				String tempVorname = jTFVorname.getText();
 				String tempNachname = jTFNachname.getText();
@@ -151,15 +151,15 @@ public class RegistrierungsGUI {
 				Benutzer temp = new Benutzer(tempVorname, tempNachname, tempUsername, tempPasswort, tempGuthaben);
 
 				int i = 0;
-				while (i < ListeALT.length) {
-					ListeNEU[i] = ListeALT[i];
+				while (i < listeALT.length) {
+					listeNEU[i] = listeALT[i];
 					i++;
 				}
-				ListeNEU[i] = temp;
+				listeNEU[i] = temp;
 
-				InteractBenutzerdaten.writeCSV(ListeNEU);
+				InteractBenutzerdaten.writeCSV(listeNEU);
 
-				Registrierung.dispose();
+				registrierungGUI.dispose();
 				new LoginGUI();
 			} else {
 				jStatus.setText("Passwort Fehler");
@@ -178,11 +178,11 @@ public class RegistrierungsGUI {
 	}
 
 	public static boolean checkUsername() {
-		String Username = RegistrierungsGUI.jTFUsername.getText();
+		String username = RegistrierungsGUI.jTFUsername.getText();
 
-		int Stelle = InteractBenutzerdaten.stelleArray(Username);
+		int stelle = InteractBenutzerdaten.stelleArray(username);
 
-		if (Stelle == -1) {
+		if (stelle == -1) {
 			return true;
 
 		}

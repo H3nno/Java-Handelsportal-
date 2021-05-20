@@ -7,27 +7,27 @@ import javax.swing.*;
 public class GuthabenHinzufuegenGUI {
 	// Anfang Attribute
 	private JTextField jNumberField1 = new JTextField();
-	private JLabel AktuellesGTB = new JLabel();
+	private JLabel lAktuellesGTB = new JLabel();
 	private JLabel lGuthabenhinzufuegen = new JLabel();
 	private JButton bSenden = new JButton();
 	private JLabel lInfoText = new JLabel();
 	private JButton bZurueck = new JButton();
 	// Ende Attribute
-	JFrame GuthabenhinzufuegenGUI = new JFrame();
+	JFrame guthabenhinzufuegenGUI = new JFrame();
 
 	public GuthabenHinzufuegenGUI() {
 		// Frame-Initialisierung
-		GuthabenhinzufuegenGUI.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		guthabenhinzufuegenGUI.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		int frameWidth = 600;
 		int frameHeight = 300;
-		GuthabenhinzufuegenGUI.setSize(frameWidth, frameHeight);
+		guthabenhinzufuegenGUI.setSize(frameWidth, frameHeight);
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-		int x = (d.width - GuthabenhinzufuegenGUI.getSize().width) / 2;
-		int y = (d.height - GuthabenhinzufuegenGUI.getSize().height) / 2;
-		GuthabenhinzufuegenGUI.setLocation(x, y);
-		GuthabenhinzufuegenGUI.setTitle("guthabenhinzufuegen");
-		GuthabenhinzufuegenGUI.setResizable(false);
-		Container cp = GuthabenhinzufuegenGUI.getContentPane();
+		int x = (d.width - guthabenhinzufuegenGUI.getSize().width) / 2;
+		int y = (d.height - guthabenhinzufuegenGUI.getSize().height) / 2;
+		guthabenhinzufuegenGUI.setLocation(x, y);
+		guthabenhinzufuegenGUI.setTitle("guthabenhinzufuegen");
+		guthabenhinzufuegenGUI.setResizable(false);
+		Container cp = guthabenhinzufuegenGUI.getContentPane();
 		cp.setLayout(null);
 		// Anfang Komponenten
 
@@ -35,9 +35,9 @@ public class GuthabenHinzufuegenGUI {
 		jNumberField1.setText("0");
 		cp.add(jNumberField1);
 
-		AktuellesGTB.setBounds(24, 60, 267, 52);
-		AktuellesGTB.setText("Aktuelles Guthaben: " + aktuellesGTB() + " €");
-		cp.add(AktuellesGTB);
+		lAktuellesGTB.setBounds(24, 60, 267, 52);
+		lAktuellesGTB.setText("Aktuelles Guthaben: " + aktuellesGTB() + " €");
+		cp.add(lAktuellesGTB);
 
 		lGuthabenhinzufuegen.setBounds(79, 13, 350, 52);
 		lGuthabenhinzufuegen.setText("Guthaben hinzufuegen");
@@ -82,47 +82,47 @@ public class GuthabenHinzufuegenGUI {
 		cp.add(lInfoText);
 		// Ende Komponenten
 
-		GuthabenhinzufuegenGUI.setVisible(true);
+		guthabenhinzufuegenGUI.setVisible(true);
 	} // end of public guthabenhinzufuegen
 
 	// Anfang Methoden
 
 	public void bSenden_ActionPerformed(ActionEvent evt) {
-		String Username = LoginGUI.NAME;
-		int Stelle = InteractBenutzerdaten.stelleArray(Username);
-		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
+		String username = LoginGUI.globalNAME;
+		int stelle = InteractBenutzerdaten.stelleArray(username);
+		Benutzer[] liste = InteractBenutzerdaten.readCSV();
 		int guthaben = 0;
 		int aktguthaben;
 		try {
 			guthaben = Integer.parseInt(jNumberField1.getText());
-			aktguthaben = Integer.parseInt(Liste[Stelle].getGuthaben());
+			aktguthaben = Integer.parseInt(liste[stelle].getGuthaben());
 			guthaben = guthaben + aktguthaben;
 		} catch (NumberFormatException e) {
 			lInfoText.setText("Bitte NUR Zahlen eingeben");
 		}
 
-		if (Stelle != -1) {
-			Liste[Stelle].setGuthaben(Integer.toString(guthaben));
-			InteractBenutzerdaten.writeCSV(Liste);
+		if (stelle != -1) {
+			liste[stelle].setGuthaben(Integer.toString(guthaben));
+			InteractBenutzerdaten.writeCSV(liste);
 
 		} // end of bSenden_ActionPerformed
-		AktuellesGTB.setText("Aktuelles Guthaben: " + aktuellesGTB() + " €");
+		lAktuellesGTB.setText("Aktuelles Guthaben: " + aktuellesGTB() + " €");
 	}
 
 	public void bZurueck_ActionPerformed(ActionEvent evt) {
 
 		jNumberField1.setText("");
 		new BenutzerverwaltungGUI();
-		GuthabenhinzufuegenGUI.dispose();
+		guthabenhinzufuegenGUI.dispose();
 
 	}
 
 	public int aktuellesGTB() {
-		String Name = LoginGUI.NAME;
-		int Stelle = InteractBenutzerdaten.stelleArray(Name);
-		Benutzer[] Liste = InteractBenutzerdaten.readCSV();
+		String name = LoginGUI.globalNAME;
+		int stelle = InteractBenutzerdaten.stelleArray(name);
+		Benutzer[] liste = InteractBenutzerdaten.readCSV();
 
-		return Integer.parseInt(Liste[Stelle].getGuthaben());
+		return Integer.parseInt(liste[stelle].getGuthaben());
 	}
 
 }
