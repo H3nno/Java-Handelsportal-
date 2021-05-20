@@ -133,11 +133,11 @@ public class LoginGUI {
 		Benutzer[] darfLoginListe = InteractBenutzerdaten.readCSV();
 		String username = jUsername.getText();
 
-		int UserID = InteractBenutzerdaten.stelleArray(username);
+		int userID = InteractBenutzerdaten.stelleArray(username);
 
-		if (UserID != -1) {
+		if (userID != -1) {
 
-			if (darfLoginListe[UserID].getPasswort().equals(jPasswordField1.getText())) {
+			if (darfLoginListe[userID].getPasswort().equals(jPasswordField1.getText())) {
 
 				lStatus.setText("Erfolgreich");
 				return true;
