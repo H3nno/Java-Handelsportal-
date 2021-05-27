@@ -16,6 +16,7 @@ public class PasswortAendernGUI {
 	private JLabel jStatus = new JLabel();
 	private JButton bZurueck = new JButton();
 	private JButton bPasswortaendern = new JButton();
+
 	// Ende Attribute
 
 	JFrame passwortAendernGUI = new JFrame();
@@ -114,7 +115,6 @@ public class PasswortAendernGUI {
 
 	@SuppressWarnings("deprecation")
 	public void bPasswortaendern_ActionPerformed(ActionEvent evt) {
-
 		String username = LoginGUI.globalNAME;
 		Benutzer[] liste = InteractBenutzerdaten.readCSV();
 
@@ -126,25 +126,16 @@ public class PasswortAendernGUI {
 				if (RegistrierungsGUI.checkPasswords(jPasswordNeu1.getText(), jPasswordNeu2.getText())) {
 
 					jStatus.setText("Passwort erfolgreich geändert!");
-					jStatus.setVisible(true);
+
 					liste[userID].setPasswort(jPasswordNeu1.getText());
 					InteractBenutzerdaten.writeCSV(liste);
-					
-					
-					
-					
-					schlafen(); // Eigentlich sollte der Text "Passwort erfolgreich geändert!"
-					// angezeigt werden und lesbar sein bevor sich das Passwort ändern Feld schließt
-					// schlafen() pausiert aber aus irgend einem Grund das Programm bevor das jLabel
-					// mit dem neuen Text bestückt wurde -> aber die Methode wird doch erst danach
-					// aufgerufe?
-					
-					new BenutzerverwaltungGUI();
+
+					schlafen();
+
 				}
 
 				else {
 					jStatus.setText("Neue Passwörter stimmen nicht überein");
-					
 
 				}
 
@@ -158,18 +149,20 @@ public class PasswortAendernGUI {
 
 	}
 
-	public void schlafen() { // nicht genutzt siehe bPasswortAendern_ActionPerformed
-		Timer timer = new Timer(3000, new ActionListener() {
-		    @Override
-		    public void actionPerformed(ActionEvent e) {
-		    	passwortAendernGUI.dispose();
-				
-				
-		    }
+	public void schlafen() { // Timer läuft immer wieder durch
+
+		Timer timer = new Timer(2000, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				passwortAendernGUI.dispose();
+				new BenutzerverwaltungGUI();
+
+			}
 		});
+
 		timer.start();
-		
-		
+
 	}
 
 }
