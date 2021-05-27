@@ -56,7 +56,6 @@ public class WarenkorbGUI {
 		
 		lGuthabenAktuell.setBounds(251, 607, 239, 37);
 		
-		
 		lGuthabenAktuell.setText("0€");
 		lGuthabenAktuell.setHorizontalAlignment(SwingConstants.CENTER);
 		lGuthabenAktuell.setHorizontalTextPosition(SwingConstants.CENTER);
